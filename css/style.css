@@ -1,0 +1,83 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    background: url("../img/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#form {
+    width: 100%;
+    padding: 15px;
+    background: rgb(27, 26, 26);
+    margin-top: 9%;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 36px;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.label, label {
+    font-size: 21px;
+    color: #e9ecf1;
+    padding: 9px;
+}
+
+input {
+    cursor: pointer;
+}
+
+select {
+    width: 162px;
+    height: 27px;
+    font-size: 18px;
+    border: none;
+    border-radius: 3px;
+    background-color: #a5aec5;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    width: 49.4%;
+    color: #e9ecf1;
+    font-size: 21px;
+    background:#518f59;
+    padding: 15px 21px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3d5aa3;
+}
+
+#buttons {
+    padding-top: 21px;
+}
+
+#container {
+    margin: auto;
+    width: 300px;
+}
+
+@media(min-width: 768px) {
+    #form {
+        margin: auto;
+        width: 500px;
+        margin-top: 9%;
+        border-radius: 3%;
+    }
+}

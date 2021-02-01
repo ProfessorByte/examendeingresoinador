@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examendeingresoinador</title>
+    <link rel="shortcut icon" href="/img/icon.png" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="form">
+        <h1>Examendeingresoinador</h1>
+        <h2>Encuentra cualquier examen de ingreso de la Facultad de Ciencias y Tecnología <br> de la Universidad Mayor
+            de San Simón</h2>
+
+        <hr>
+        <div id="container">
+            <label for="anio" class="label">Año: </label>
+            <select name="anio" id="anio">
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+            </select>
+
+            <div class="label">Semestre del año elegido: </div>
+            <input type="radio" name="semestre" id="primer" value="1">
+            <label for="primer">Primer Semestre</label>
+            <br>
+            <input type="radio" name="semestre" id="segundo" value="2">
+            <label for="segundo">Segundo Semestre</label>
+
+            <br><br>
+
+            <label for="op" class="label">Opción: </label>
+            <select name="op" id="op"></select>
+
+            <div class="label">Fila: </div>
+            <input type="radio" name="fila" id="fila1" value="1">
+            <label for="fila1">Fila 1</label>
+            <input type="radio" name="fila" id="fila2" value="2">
+            <label for="fila2">Fila 2</label>
+
+        </div>
+        <div id=buttons>
+            <button id="de">Descargar Examen</button>
+            <button id="ds">Descargar Solución</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
