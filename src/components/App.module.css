@@ -1,7 +1,9 @@
-.backgroundColor {
-  background-color: #121212;
-  background-image: url(../../public/assets/img/background.jpg);
-  background-size: cover;
-  height: 100vh;
-  background-repeat: no-repeat;
+@media screen and (min-width: 768px) {
+  .backgroundColor {
+    background-image: url(../../public/assets/img/background.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

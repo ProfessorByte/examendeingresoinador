@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormToGetData } from "./FormToGetData";
 import styles from "./App.module.css";
 
 export default function App() {
+  useEffect(() => {
+    document.body.style.backgroundColor = "#121212";
+  }, []);
+
   return (
     <div className={styles.backgroundColor}>
       <div className="container">
