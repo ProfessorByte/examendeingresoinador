@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field, Formik } from "formik";
+import styles from "./FormToGetData.module.css";
 
 export const FormToGetData = () => {
   const formValuesDefault = {
     year: "",
-    semester: "1",
+    semester: "",
     option: "",
-    numRow: "1",
+    numRow: "",
   };
   const [formValues, setFormValues] = useState(formValuesDefault);
 
@@ -34,21 +35,14 @@ export const FormToGetData = () => {
 
   return (
     <>
-      <div className="row">
+      <div className={`row ${styles.formBackground}`}>
         <Formik
           initialValues={formValues}
           onSubmit={handleSubmit}
           validate={handleValidate}
           enableReinitialize={true}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-          }) => (
+          {({ values, handleSubmit }) => (
             <form className="col" onSubmit={handleSubmit}>
               <div className="row justify-content-center mb-3">
                 <h1 className="col-auto">Examendeingresoinador</h1>
@@ -57,8 +51,8 @@ export const FormToGetData = () => {
                 <p className="col-auto text-center fw-bold">
                   Encuentra cualquier examen de ingreso de la Facultad de
                   Ciencias y Tecnología de la Universidad Mayor de San Simón
-                  <hr />
                 </p>
+                <hr />
               </div>
               <div className="form-group row mb-3">
                 <label htmlFor="year" className="col-md-2 col-form-label">
@@ -71,7 +65,7 @@ export const FormToGetData = () => {
                     name="year"
                     as="select"
                   >
-                    <option value="">Seleccione un año</option>
+                    <option value="">Seleccione el año del examen</option>
                     {[...Array(20).keys()].map((year) => (
                       <option key={year} value={year + 2001}>
                         {year + 2001}
@@ -107,10 +101,7 @@ export const FormToGetData = () => {
                     autoComplete="off"
                     value="1"
                   />
-                  <label
-                    className="btn btn-outline-secondary"
-                    htmlFor="semester1"
-                  >
+                  <label className="btn btn-outline-info" htmlFor="semester1">
                     Primer semestre
                   </label>
 
@@ -122,14 +113,11 @@ export const FormToGetData = () => {
                     autoComplete="off"
                     value="2"
                   />
-                  <label
-                    className="btn btn-outline-secondary"
-                    htmlFor="semester2"
-                  >
+                  <label className="btn btn-outline-info" htmlFor="semester2">
                     Segundo semestre
                   </label>
                 </div>
-                <div className="col-md-10 text-danger">
+                <div className="col-12 text-danger">
                   <ErrorMessage name="semester" />
                 </div>
               </div>
@@ -145,7 +133,7 @@ export const FormToGetData = () => {
                     name="option"
                     as="select"
                   >
-                    <option value="">Seleccione una opción</option>
+                    <option value="">Seleccione la opción del examen</option>
                     <option value="1">Primera opción</option>
                     <option value="2">Segunda opción</option>
                     {values.semester === "1" && (
@@ -175,10 +163,7 @@ export const FormToGetData = () => {
                     autoComplete="off"
                     value="1"
                   />
-                  <label
-                    className="btn btn-outline-secondary"
-                    htmlFor="numRow1"
-                  >
+                  <label className="btn btn-outline-info" htmlFor="numRow1">
                     Fila 1
                   </label>
 
@@ -190,12 +175,12 @@ export const FormToGetData = () => {
                     autoComplete="off"
                     value="2"
                   />
-                  <label
-                    className="btn btn-outline-secondary"
-                    htmlFor="numRow2"
-                  >
+                  <label className="btn btn-outline-info" htmlFor="numRow2">
                     Fila 2
                   </label>
+                </div>
+                <div className="col-12 text-danger">
+                  <ErrorMessage name="numRow" />
                 </div>
               </div>
 

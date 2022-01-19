@@ -1,0 +1,7 @@
+.backgroundColor {
+  background-color: #121212;
+  background-image: url(../../public/assets/img/background.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
