@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/examendeingresoinador/static/css/main.b4fd4256.css",
+    "main.js": "/examendeingresoinador/static/js/main.455b60cb.js",
+    "static/js/787.63e19c1a.chunk.js": "/examendeingresoinador/static/js/787.63e19c1a.chunk.js",
+    "static/media/background.jpg": "/examendeingresoinador/static/media/background.5641d7a404d2a0834389.jpg",
+    "index.html": "/examendeingresoinador/index.html",
+    "main.b4fd4256.css.map": "/examendeingresoinador/static/css/main.b4fd4256.css.map",
+    "main.455b60cb.js.map": "/examendeingresoinador/static/js/main.455b60cb.js.map",
+    "787.63e19c1a.chunk.js.map": "/examendeingresoinador/static/js/787.63e19c1a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4fd4256.css",
+    "static/js/main.455b60cb.js"
+  ]
+}
