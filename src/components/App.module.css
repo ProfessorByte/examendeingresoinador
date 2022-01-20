@@ -1,4 +1,4 @@
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 375px) {
   .backgroundColor {
     background-image: url(../../public/assets/img/background.jpg);
     background-size: cover;

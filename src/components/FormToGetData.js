@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field, Formik } from "formik";
+import { isMobile } from "react-device-detect";
 import styles from "./FormToGetData.module.css";
 
 export const FormToGetData = () => {
@@ -226,7 +227,7 @@ export const FormToGetData = () => {
                       setTypeSubmit("exam");
                     }}
                   >
-                    Ver examen
+                    {isMobile ? "Descargar examen" : "Ver examen"}
                   </button>
                 </div>
                 <div className="col-6">
@@ -237,7 +238,7 @@ export const FormToGetData = () => {
                       setTypeSubmit("solution");
                     }}
                   >
-                    Ver solución
+                    {isMobile ? "Descargar solución" : "Ver solución"}
                   </button>
                 </div>
               </div>
