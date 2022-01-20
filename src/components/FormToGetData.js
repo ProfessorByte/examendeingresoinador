@@ -13,9 +13,32 @@ export const FormToGetData = () => {
 
   const [typeSubmit, setTypeSubmit] = useState("");
 
-  const showExam = (values) => {};
+  const arrIds = [
+    [557, 565, 572, 579, 585, 592, 599, 606, 615],
+    [561, 569, 576, 582, 589, 596, 603, 612],
+  ];
 
-  const showSolution = (values) => {};
+  const showExam = (values) => {
+    const link = `http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/examenes/${
+      values.year
+    }-${values.semester}-${
+      arrIds[Number(values.semester) - 1][Number(values.year) - 2012] +
+      Number(values.option) +
+      (values.year === "2020" && values.option === "3" ? 1 : 0)
+    }/1/6-${values.numRow}.pdf`;
+    window.open(link, "_blank");
+  };
+
+  const showSolution = (values) => {
+    const link = `http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/solucionario/${
+      values.year
+    }-${values.semester}-${
+      arrIds[Number(values.semester) - 1][Number(values.year) - 2012] +
+      Number(values.option) +
+      (values.year === "2020" && values.option === "3" ? 1 : 0)
+    }/1/6-${values.numRow}/0.pdf`;
+    window.open(link, "_blank");
+  };
 
   const handleSubmit = (values) => {
     if (typeSubmit === "exam") {
