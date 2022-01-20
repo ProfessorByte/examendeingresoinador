@@ -11,8 +11,18 @@ export const FormToGetData = () => {
   };
   const [formValues, setFormValues] = useState(formValuesDefault);
 
+  const [typeSubmit, setTypeSubmit] = useState("");
+
+  const showExam = (values) => {};
+
+  const showSolution = (values) => {};
+
   const handleSubmit = (values) => {
-    console.log(values);
+    if (typeSubmit === "exam") {
+      showExam(values);
+    } else if (typeSubmit === "solution") {
+      showSolution(values);
+    }
   };
 
   const handleValidate = (values) => {
@@ -66,9 +76,9 @@ export const FormToGetData = () => {
                     as="select"
                   >
                     <option value="">Seleccione el año del examen</option>
-                    {[...Array(20).keys()].map((year) => (
-                      <option key={year} value={year + 2001}>
-                        {year + 2001}
+                    {[...Array(9).keys()].map((year) => (
+                      <option key={year} value={year + 2012}>
+                        {year + 2012}
                       </option>
                     ))}
                   </Field>
@@ -189,6 +199,9 @@ export const FormToGetData = () => {
                   <button
                     type="submit"
                     className="btn btn-success btn-lg w-100"
+                    onClick={() => {
+                      setTypeSubmit("exam");
+                    }}
                   >
                     Ver examen
                   </button>
@@ -197,6 +210,9 @@ export const FormToGetData = () => {
                   <button
                     type="submit"
                     className="btn btn-success btn-lg w-100"
+                    onClick={() => {
+                      setTypeSubmit("solution");
+                    }}
                   >
                     Ver solución
                   </button>
