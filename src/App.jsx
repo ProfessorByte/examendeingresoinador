@@ -1,7 +1,9 @@
+import { Banner } from "./components/Banner";
+
 export const App = () => {
   return (
     <div>
-      <h1>Examendeingresoinador</h1>
+      <Banner />
     </div>
   );
 };
