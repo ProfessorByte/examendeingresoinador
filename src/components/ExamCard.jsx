@@ -20,7 +20,7 @@ export const ExamCard = ({
   return (
     <button
       type="button"
-      className="p-4 bg-brand-black rounded-lg border border-solid border-[#e5e7eb] shadow-lg shadow-black hover:bg-brand-darkblue transition duration-300 ease-in-out"
+      className="p-4 bg-brand-darkgray rounded-lg border border-solid border-[#e5e7eb] shadow-lg shadow-black hover:bg-brand-darkblue transition duration-300 ease-in-out"
       onClick={handleOpenExam}
     >
       <h3 className="text-2xl font-semibold text-brand-white">
