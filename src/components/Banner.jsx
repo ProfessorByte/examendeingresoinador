@@ -14,7 +14,7 @@ export const Banner = () => {
           conocido...
         </p>
         <h1 className="text-3xl md:text-5xl font-bangers tracking-wider">
-          El EXAMEN DE INGRESO-INADOR
+          EL EXAMEN DE INGRESO-INADOR
         </h1>
         <p>
           Esta web está destinada a crear un ejército de científicos e
