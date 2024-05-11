@@ -32,7 +32,7 @@ export const ExamCard = ({
       <p className="text-sm text-brand-darkwhite mt-2">{`Gestión ${semester}-${year}`}</p>
       <button
         type="button"
-        className="mt-3 p-1 bg-blue-300 text-sm text-brand-black rounded-full hover:bg-blue-600"
+        className="mt-3 p-1 bg-[#0dcaf0] text-sm text-brand-black rounded-full hover:bg-sky-600"
         onClick={handleOpenSolution}
       >
         Ver solución
