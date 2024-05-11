@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { db } from "../services/database";
 import Select from "react-select";
 import { collection, onSnapshot } from "firebase/firestore";
@@ -53,6 +53,8 @@ export const Filter = () => {
   const [seasonValue, setSeasonValue] = useState(1);
   const [filteredDataUrls, setFilteredDataUrls] = useState([]);
 
+  const examsSectionRef = useRef(null);
+
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "dataUrls"), (snapshot) => {
       const dataUrls = snapshot.docs
@@ -80,6 +82,7 @@ export const Filter = () => {
             dataUrl.year === yearValue && dataUrl.semester === seasonValue
         )
       );
+      examsSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [dataUrls, yearValue, seasonValue]);
 
@@ -100,7 +103,10 @@ export const Filter = () => {
 
   return (
     <>
-      <section className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%] mt-9 p-6">
+      <section
+        className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%] mt-9 p-6"
+        ref={examsSectionRef}
+      >
         <Select
           styles={darkStyles}
           options={yearsOptions}
