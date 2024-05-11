@@ -104,6 +104,7 @@ export const Filter = () => {
         <Select
           styles={darkStyles}
           options={yearsOptions}
+          isSearchable={false}
           className="w-1/2"
           placeholder="Año"
           value={yearsOptions.find((option) => option.value === yearValue)}
@@ -113,6 +114,7 @@ export const Filter = () => {
           <Select
             styles={darkStyles}
             options={seasonsOptions}
+            isSearchable={false}
             className="w-1/2"
             placeholder="Temporada"
             value={seasonsOptions.find(
