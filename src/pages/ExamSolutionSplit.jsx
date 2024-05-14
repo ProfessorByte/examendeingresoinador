@@ -1,9 +1,8 @@
-import { useState } from "react";
-import Split from "react-split-grid";
+import { useState, useEffect } from "react";
 import { PdfPage } from "../components/PdfPage";
 import { Gutter } from "../components/Gutter";
-import { useEffect } from "react";
 import { Worker } from "@react-pdf-viewer/core";
+import Split from "react-split-grid";
 
 export const ExamSolutionSplit = () => {
   const [gridTemplate, setGridTemplate] = useState("1fr 18px 1fr");
@@ -30,7 +29,7 @@ export const ExamSolutionSplit = () => {
         columnMinSize: undefined,
         gridTemplateRows: gridTemplate,
         cursor: "row-resize",
-        rowMinSize: 102,
+        rowMinSize: 36,
       };
     }
     return {
@@ -38,7 +37,7 @@ export const ExamSolutionSplit = () => {
       rowMinSize: undefined,
       gridTemplateColumns: gridTemplate,
       cursor: "col-resize",
-      columnMinSize: 102,
+      columnMinSize: 36,
     };
   };
 
