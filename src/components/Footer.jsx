@@ -1,5 +1,6 @@
 import {
   FacebookIcon,
+  GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
   XIcon,
@@ -39,6 +40,10 @@ export const Footer = () => {
             <SocialMediaIcon
               MediaIcon={LinkedInIcon}
               href="https://www.linkedin.com/in/pablopardoalcocer/"
+            />
+            <SocialMediaIcon
+              MediaIcon={GitHubIcon}
+              href="https://github.com/ProfessorByte"
             />
           </div>
         </div>
