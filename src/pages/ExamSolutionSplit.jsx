@@ -3,6 +3,7 @@ import Split from "react-split-grid";
 import { PdfPage } from "../components/PdfPage";
 import { Gutter } from "../components/Gutter";
 import { useEffect } from "react";
+import { Worker } from "@react-pdf-viewer/core";
 
 export const ExamSolutionSplit = () => {
   const [gridTemplate, setGridTemplate] = useState("1fr 18px 1fr");
@@ -15,19 +16,10 @@ export const ExamSolutionSplit = () => {
       setDirectionSplit(window.innerWidth < 768 ? "row" : "column");
     };
 
-    const handleTouchMove = (event) => {
-      if (window.scrollY === 0) {
-        event.preventDefault();
-      }
-    };
-
     window.addEventListener("resize", handleResize);
-    window.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
 
     return () => {
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -55,20 +47,22 @@ export const ExamSolutionSplit = () => {
   };
 
   return (
-    <Split
-      {...setSplitProps(directionSplit)}
-      onDrag={handleDrag}
-      render={({ getGridProps, getGutterProps }) => (
-        <div className="grid h-screen" {...getGridProps()}>
-          <PdfPage />
-          <Gutter
-            direction={directionSplit}
-            getGutterProps={getGutterProps}
-            track={1}
-          />
-          <PdfPage />
-        </div>
-      )}
-    />
+    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+      <Split
+        {...setSplitProps(directionSplit)}
+        onDrag={handleDrag}
+        render={({ getGridProps, getGutterProps }) => (
+          <div className="grid h-screen" {...getGridProps()}>
+            <PdfPage />
+            <Gutter
+              direction={directionSplit}
+              getGutterProps={getGutterProps}
+              track={1}
+            />
+            <PdfPage />
+          </div>
+        )}
+      />
+    </Worker>
   );
 };
