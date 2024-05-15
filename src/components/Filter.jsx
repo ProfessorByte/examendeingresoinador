@@ -58,7 +58,7 @@ export const Filter = () => {
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "dataUrls"), (snapshot) => {
       const dataUrls = snapshot.docs
-        .map((doc) => doc.data())
+        .map((doc) => ({ ...doc.data(), dataId: doc.id }))
         .sort((a, b) => {
           if (a.examUrl < b.examUrl) {
             return -1;
@@ -133,7 +133,7 @@ export const Filter = () => {
       {filteredDataUrls.length > 0 ? (
         <section className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
           {filteredDataUrls.map((dataUrl) => (
-            <ExamCard key={dataUrl.examUrl} {...dataUrl} />
+            <ExamCard key={dataUrl.dataId} {...dataUrl} />
           ))}
         </section>
       ) : (

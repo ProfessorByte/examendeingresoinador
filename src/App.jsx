@@ -8,7 +8,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/exam" element={<ExamSolutionSplit />} />
+        <Route path="/exams/:dataId" element={<ExamSolutionSplit />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

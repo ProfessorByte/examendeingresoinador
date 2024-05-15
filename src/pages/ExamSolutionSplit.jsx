@@ -52,13 +52,13 @@ export const ExamSolutionSplit = () => {
         onDrag={handleDrag}
         render={({ getGridProps, getGutterProps }) => (
           <div className="grid h-screen" {...getGridProps()}>
-            <PdfPage />
+            <PdfPage pdfContentLabel="exam" />
             <Gutter
               direction={directionSplit}
               getGutterProps={getGutterProps}
               track={1}
             />
-            <PdfPage />
+            <PdfPage pdfContentLabel="solution" />
           </div>
         )}
       />
