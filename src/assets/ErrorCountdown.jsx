@@ -21,7 +21,8 @@ export const ErrorCountdown = ({ seconds }) => {
           <h3 className="text-3xl font-bold">Oops!</h3>
           <span className="text-2xl font-semibold">Hubo un error :(</span>
           <span className="text-xl">
-            El Examen de Ingreso-inador se reiniciará en {count} segundos...
+            El <span className="font-bangers">Examen de Ingreso-inador</span> se
+            reiniciará en {count} segundos...
           </span>
         </article>
       ) : (
