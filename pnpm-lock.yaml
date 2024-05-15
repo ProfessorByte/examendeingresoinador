@@ -26,6 +26,9 @@ importers:
       firebase:
         specifier: ^10.11.1
         version: 10.12.0
+      pdf-to-base64:
+        specifier: ^1.0.3
+        version: 1.0.3
       pdfjs-dist:
         specifier: 3.4.120
         version: 3.4.120
@@ -1762,6 +1765,9 @@ packages:
   path2d-polyfill@2.0.1:
     resolution: {integrity: sha512-ad/3bsalbbWhmBo0D6FZ4RNMwsLsPpL6gnvhuSaU5Vm7b06Kr5ubSltQQ0T7YKsiJQO+g22zJ4dJKNTXIyOXtA==}
     engines: {node: '>=8'}
+
+  pdf-to-base64@1.0.3:
+    resolution: {integrity: sha512-hReb9RzE8/kZE9Sjq913XXg3t8tyNn4VyDFs3VfXtMEIr/IQlKih+Te8EakJTkps8HxjUlULM5007xkp/DXs/Q==}
 
   pdfjs-dist@3.4.120:
     resolution: {integrity: sha512-B1hw9ilLG4m/jNeFA0C2A0PZydjxslP8ylU+I4XM7Bzh/xWETo9EiBV848lh0O0hLut7T6lK1V7cpAXv5BhxWw==}
@@ -4082,7 +4088,6 @@ snapshots:
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
-    optional: true
 
   node-releases@2.0.14: {}
 
@@ -4191,6 +4196,12 @@ snapshots:
   path-type@4.0.0: {}
 
   path2d-polyfill@2.0.1: {}
+
+  pdf-to-base64@1.0.3:
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
 
   pdfjs-dist@3.4.120:
     dependencies:
@@ -4626,8 +4637,7 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  tr46@0.0.3:
-    optional: true
+  tr46@0.0.3: {}
 
   ts-interface-checker@0.1.13: {}
 
@@ -4713,8 +4723,7 @@ snapshots:
 
   web-streams-polyfill@3.3.3: {}
 
-  webidl-conversions@3.0.1:
-    optional: true
+  webidl-conversions@3.0.1: {}
 
   websocket-driver@0.7.4:
     dependencies:
@@ -4728,7 +4737,6 @@ snapshots:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    optional: true
 
   which-boxed-primitive@1.0.2:
     dependencies:
