@@ -6,7 +6,7 @@ import {
   XIcon,
 } from "../assets/Icons";
 import { SocialMediaIcon } from "./SocialMediaIcon";
-import PablouxPic from "/pabloux.png";
+import PablouxPic from "/pabloux.jpg";
 
 export const Footer = () => {
   return (

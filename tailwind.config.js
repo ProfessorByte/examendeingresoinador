@@ -13,7 +13,7 @@ export default {
       },
       fontFamily: {
         nunito: ["Nunito Variable", "sans-serif"],
-        bangers: ["Bangers", "cursive"],
+        bangers: ["Bangers", "sans-serif"],
       },
       backgroundImage: {
         "vertical-split":
