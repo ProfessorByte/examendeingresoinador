@@ -8,13 +8,16 @@ import PropTypes from "prop-types";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
-export const urlExamTemplate =
+const urlExamTemplate =
   "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/examenes/{YEAR}-{SEMESTER}-{ID}/1/6-{FORM_VERSION}.pdf";
-export const urlSolutionTemplate =
+const urlSolutionTemplate =
   "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/solucionario/{YEAR}-{SEMESTER}-{ID}/1/6-{FORM_VERSION}/0.pdf";
 
 export const PdfPage = ({ pdfContentLabel }) => {
   const { dataId } = useParams();
+
+  const fileNameGenerator = () =>
+    pdfContentLabel === "exam" ? `Examen_${dataId}` : `Solucionario_${dataId}`;
 
   const getUrl = (urlTemplate) => {
     const [year, semester, idResource, formVersion] = dataId.split("-");
@@ -30,7 +33,7 @@ export const PdfPage = ({ pdfContentLabel }) => {
   const zoomPluginInstance = zoomPlugin();
   const { ZoomInButton, ZoomOutButton, ZoomPopover } = zoomPluginInstance;
 
-  const getFilePluginInstance = getFilePlugin();
+  const getFilePluginInstance = getFilePlugin({ fileNameGenerator });
   const { DownloadButton } = getFilePluginInstance;
 
   return (
