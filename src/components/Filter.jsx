@@ -131,18 +131,20 @@ export const Filter = () => {
         )}
       </section>
       {filteredDataUrls.length > 0 ? (
-        <section className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
+        <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
           {filteredDataUrls.map((dataUrl) => (
             <ExamCard key={dataUrl.dataId} {...dataUrl} />
           ))}
-        </section>
+        </main>
       ) : (
-        <section className="flex justify-center flex-col items-center gap-3 mx-auto md:max-w-[60%] my-9 p-6">
+        <main className="flex justify-center flex-col items-center gap-3 mx-auto md:max-w-[60%] my-9 p-6">
           <ExamDateIcon width={128} height={128} fill="#f3f4f6" />
-          <p className="text-2xl font-semibold text-brand-white">
-            {yearValue ? "No hay exámenes disponibles" : "Selecciona un año"}
+          <p className="text-2xl text-center font-semibold text-brand-white">
+            {yearValue
+              ? "No hay exámenes para el periodo seleccionado"
+              : "Selecciona un año para ver los exámenes disponibles"}
           </p>
-        </section>
+        </main>
       )}
     </>
   );

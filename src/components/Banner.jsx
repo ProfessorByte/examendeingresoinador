@@ -2,7 +2,7 @@ import BannerImg from "/exam.jpg";
 
 export const Banner = () => {
   return (
-    <section className="relative font-bold h-[60vh] min-h-[360px] bg-brand-darkblue flex items-center justify-center">
+    <header className="relative font-bold h-[60vh] min-h-[360px] bg-brand-darkblue flex items-center justify-center">
       <img
         src={BannerImg}
         alt="Examen de ingreso"
@@ -21,6 +21,6 @@ export const Banner = () => {
           ingenieros que me ayudarán a dominar el mundo JAJAJA
         </p>
       </div>
-    </section>
+    </header>
   );
 };
