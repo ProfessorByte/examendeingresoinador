@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Adjusted Impact Fallback";
+  src: local(Impact);
+  size-adjust: 86%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: normal;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
