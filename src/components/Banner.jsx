@@ -7,7 +7,8 @@ export const Banner = () => {
         src={BannerImg}
         alt="Examen de ingreso"
         className="opacity-45 w-full h-full object-cover absolute top-0 left-0 z-0 filter blur-[0.3rem] brightness-[.66] contrast-150 grayscale-100 invert-0 saturate-100 sepia-0"
-        fetchPriority="high"
+        // eslint-disable-next-line react/no-unknown-property
+        fetchpriority="high"
       />
       <div className="w-full h-full p-3 flex flex-col gap-6 items-center justify-center text-center md:text-xl max-w-[600px] z-10">
         <p>
