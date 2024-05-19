@@ -21,6 +21,18 @@ export default {
         "horizontal-split":
           "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=')",
       },
+      keyframes: {
+        slideFromRight: {
+          "0%": { transform: "translateX(100%)" },
+          "9%": { transform: "translateX(0)" },
+          "90%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        slideFromRight:
+          "slideFromRight 3s cubic-bezier(0.5, 1.6, 0.4, 0.7) forwards",
+      },
     },
   },
   plugins: [],

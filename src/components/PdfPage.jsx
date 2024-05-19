@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Loader } from "../assets/Loader";
 import { ErrorCountdown } from "../assets/ErrorCountdown";
 import { Viewer } from "@react-pdf-viewer/core";
@@ -14,6 +15,15 @@ const urlSolutionTemplate =
   "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/solucionario/{YEAR}-{SEMESTER}-{ID}/1/6-{FORM_VERSION}/0.pdf";
 
 export const PdfPage = ({ pdfContentLabel }) => {
+  const [showCover, setShowCover] = useState(false);
+
+  const handleDocumentLoad = () => {
+    setShowCover(true);
+    setTimeout(() => {
+      setShowCover(false);
+    }, 3000);
+  };
+
   const { dataId } = useParams();
 
   const fileNameGenerator = () =>
@@ -39,6 +49,11 @@ export const PdfPage = ({ pdfContentLabel }) => {
   return (
     <div className="overflow-x-hidden">
       <div className="sticky z-10 bg-brand-white flex justify-center items-center h-9">
+        {showCover && (
+          <div className="absolute inset-0 bg-brand-darkgray flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slideFromRight">
+            {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
+          </div>
+        )}
         <div className="ml-9 flex justify-center items-center">
           <ZoomOutButton />
           <ZoomPopover />
@@ -57,6 +72,7 @@ export const PdfPage = ({ pdfContentLabel }) => {
             <Loader percentages={percentages} size={100} fill="#f3f4f6" />
           )}
           renderError={() => <ErrorCountdown seconds={3} />}
+          onDocumentLoad={handleDocumentLoad}
         />
       </div>
     </div>
