@@ -9,7 +9,8 @@ export default {
         "brand-gray": "#343541",
         "brand-darkblue": "#0f172a",
         "brand-white": "#f3f4f6",
-        "brand-darkwhite": "#f0f0f0",
+        "brand-darkwhite": "#c9c9c9",
+        "brand-darkgreen": "#00838d",
       },
       fontFamily: {
         nunito: ["Nunito Variable", "sans-serif"],
