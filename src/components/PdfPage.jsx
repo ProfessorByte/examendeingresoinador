@@ -27,7 +27,7 @@ export const PdfPage = ({ pdfContentLabel }) => {
   const { dataId } = useParams();
 
   const fileNameGenerator = () =>
-    pdfContentLabel === "exam" ? `Examen_${dataId}` : `Solucionario_${dataId}`;
+    pdfContentLabel === "exam" ? `Preguntas_${dataId}` : `Respuestas_${dataId}`;
 
   const getUrl = (urlTemplate) => {
     const [year, semester, idResource, formVersion] = dataId.split("-");
