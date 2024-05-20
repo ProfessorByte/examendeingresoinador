@@ -12,16 +12,13 @@ export const Banner = () => {
       />
       <div className="w-full h-full p-3 flex flex-col gap-6 items-center justify-center text-center md:text-xl max-w-[600px] z-10">
         <p>
-          Admira la creación más malévola y siniestra que el mundo haya
-          conocido...
+          Evolucionamos, aprendemos de los errores y dejamos mentes brillantes
+          para que la ciencia siga avanzando.
         </p>
         <h1 className="text-3xl md:text-5xl font-bangers tracking-wider">
-          EL EXAMEN DE INGRESO-INADOR
+          EXAMEN DE INGRESO-INADOR
         </h1>
-        <p>
-          Esta web está destinada a crear un ejército de científicos e
-          ingenieros que me ayudarán a dominar el mundo JAJAJA
-        </p>
+        <p>El conocimiento es libre.</p>
       </div>
     </header>
   );
