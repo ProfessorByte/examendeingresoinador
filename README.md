@@ -28,7 +28,7 @@ Follow these steps to get the project up and running on your local machine.
 - npm or pnpm
 - Firebase account
 
-### Installation
+### How to run the project
 
 1. **Clone the repository and install dependencies:**
 
