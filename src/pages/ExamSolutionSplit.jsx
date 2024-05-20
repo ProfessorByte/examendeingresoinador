@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PdfPage } from "../components/PdfPage";
 import { Gutter } from "../components/Gutter";
 import { Worker } from "@react-pdf-viewer/core";
@@ -10,12 +10,16 @@ export const ExamSolutionSplit = () => {
     window.innerWidth < 768 ? "row" : "column"
   );
 
+  const containerRef = useRef(null);
+
   useEffect(() => {
     const handleResize = () => {
       setDirectionSplit(window.innerWidth < 768 ? "row" : "column");
     };
 
     window.addEventListener("resize", handleResize);
+
+    containerRef.current.scrollIntoView({ behavior: "smooth" });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -51,7 +55,7 @@ export const ExamSolutionSplit = () => {
         {...setSplitProps(directionSplit)}
         onDrag={handleDrag}
         render={({ getGridProps, getGutterProps }) => (
-          <div className="grid h-screen" {...getGridProps()}>
+          <div className="grid h-screen" {...getGridProps()} ref={containerRef}>
             <PdfPage pdfContentLabel="exam" />
             <Gutter
               direction={directionSplit}
