@@ -49,12 +49,15 @@ export const PdfPage = ({ pdfContentLabel }) => {
   return (
     <div className="overflow-x-hidden">
       <div className="sticky z-10 bg-brand-white flex justify-center items-center h-9">
-        <div className="ml-9 flex justify-center items-center">
+        <div className="flex-1" />
+        <div className="flex flex-grow-0 justify-center items-center">
           <ZoomOutButton />
           <ZoomPopover />
           <ZoomInButton />
         </div>
-        <DownloadButton />
+        <div className="flex-1">
+          <DownloadButton />
+        </div>
       </div>
       <div className="h-[calc(100%-2.25rem)] relative">
         {showCover && (
