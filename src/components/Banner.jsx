@@ -10,15 +10,15 @@ export const Banner = () => {
         // eslint-disable-next-line react/no-unknown-property
         fetchpriority="high"
       />
-      <div className="w-full h-full p-3 flex flex-col gap-6 items-center justify-center text-center md:text-xl max-w-[600px] z-10">
-        <p>
-          Evolucionamos, aprendemos de los errores y dejamos mentes brillantes
-          para que la ciencia siga avanzando.
-        </p>
+      <div className="size-full p-6 flex flex-col gap-6 items-center justify-center text-center max-w-[768px] z-10">
+        <p>El conocimiento es libre.</p>
         <h1 className="text-3xl md:text-5xl font-bangers tracking-wider">
           EXAMEN DE INGRESO-INADOR
         </h1>
-        <p>El conocimiento es libre.</p>
+        <p className="text-xl">
+          Evolucionamos, aprendemos de los errores y dejamos mentes brillantes
+          para que la ciencia siga avanzando.
+        </p>
       </div>
     </header>
   );
