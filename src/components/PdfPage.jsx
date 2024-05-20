@@ -49,11 +49,6 @@ export const PdfPage = ({ pdfContentLabel }) => {
   return (
     <div className="overflow-x-hidden">
       <div className="sticky z-10 bg-brand-white flex justify-center items-center h-9">
-        {showCover && (
-          <div className="absolute inset-0 bg-brand-darkgray flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slideFromRight">
-            {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
-          </div>
-        )}
         <div className="ml-9 flex justify-center items-center">
           <ZoomOutButton />
           <ZoomPopover />
@@ -61,7 +56,12 @@ export const PdfPage = ({ pdfContentLabel }) => {
         </div>
         <DownloadButton />
       </div>
-      <div className="h-[calc(100%-2.25rem)]">
+      <div className="h-[calc(100%-2.25rem)] relative">
+        {showCover && (
+          <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray bg-opacity-75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slideFromRight">
+            {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
+          </div>
+        )}
         <Viewer
           fileUrl={getUrl(
             pdfContentLabel === "exam" ? urlExamTemplate : urlSolutionTemplate
