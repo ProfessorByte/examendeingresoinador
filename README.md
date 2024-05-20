@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Examen de Ingreso-inador
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Examen de Ingreso-inador! This project is designed to provide an intuitive and pleasant user experience for students searching for entrance exams to the Faculty of Science and Technology (FCyT) at the Universidad Mayor de San Simón (UMSS). Built with Vite and React, this single-page application (SPA) offers quick load times and responsive design to cater to users on various devices, even those with limited resources.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Search and Filter Exams:** Users can search for entrance exams by year and period (early or mid-year) from 2012 to the present, excluding the virtual exams held during the COVID-19 pandemic.
+- **Responsive Design:** The application adapts seamlessly to any screen size, ensuring a great experience whether on a desktop, tablet, or mobile device.
+- **Split Pane View:** On larger screens (PC or horizontal view), exams are displayed in a split pane with questions on the left and step-by-step solutions on the right. On smaller screens (mobile or vertical view), questions appear at the top and solutions at the bottom.
+- **Adjustable Split Pane:** Users can resize the split pane to focus on either questions or solutions as needed.
+- **PDF Tools:** A toolbar allows users to download PDFs of both questions and solutions and to zoom in and out for better readability.
 
-### `npm start`
+## Live Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can check out the live deployment of the project [here](https://examendeingresoinador.web.app).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Data Collection
 
-### `npm test`
+The data for the exams and their solutions were collected from the official [FCyT-UMSS](http://sagaa.fcyt.umss.edu.bo/) website using a custom Pseudocrawler. This tool indexed exams based on specific URL patterns. The Pseudocrawler project repository can be found [here](https://github.com/ProfessorByte/FCyT_UMSS_ExamsPseudocrawler).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+Follow these steps to get the project up and running on your local machine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js
+- npm or pnpm
+- Firebase account
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### How to run the project
 
-### `npm run eject`
+1. **Clone the repository and install dependencies:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/ProfessorByte/examendeingresoinador.git
+   cd examendeingresoinador
+   pnpm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Configure the `.env` file:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   You must have a Firebase project where you have migrated the data from the entrance exams into a `dataUrls` collection using the [Pseudocrawler](https://github.com/ProfessorByte/FCyT_UMSS_ExamsPseudocrawler). You must enter the connection data for your Firebase project in an `.env` file, guided by the `.env.template` file found in this project.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Running the Application:**
 
-## Learn More
+   To start the development server, run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   pnpm dev
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   This will open the application in your default browser at http://localhost:5173.
 
-### Code Splitting
+4. **Building for Production**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   To create a production build, run:
 
-### Analyzing the Bundle Size
+   ```bash
+   pnpm build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   The production-ready files will be in the `dist` folder.
 
-### Making a Progressive Web App
+   After creating the build YOU SHOULD NOT FORGET to uncomment and delete the `TODO`, as indicated in the `index.html` file, this action must be performed in the `index.html` file in the `dist` folder. Do not perform this action in the `index.html` file located at the root of the project, only do it in the production build file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy coding! If you have any questions, feel free to reach out.
