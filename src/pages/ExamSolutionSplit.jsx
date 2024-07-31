@@ -55,7 +55,7 @@ export const ExamSolutionSplit = () => {
         {...setSplitProps(directionSplit)}
         onDrag={handleDrag}
         render={({ getGridProps, getGutterProps }) => (
-          <div className="grid h-screen" {...getGridProps()} ref={containerRef}>
+          <div className="grid h-dvh" {...getGridProps()} ref={containerRef}>
             <PdfPage pdfContentLabel="exam" />
             <Gutter
               direction={directionSplit}
