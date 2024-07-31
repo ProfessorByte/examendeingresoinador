@@ -104,7 +104,7 @@ export const Filter = () => {
   return (
     <>
       <section
-        className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%] mt-9 p-6"
+        className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%]"
         ref={examsSectionRef}
       >
         <Select
