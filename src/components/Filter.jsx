@@ -42,15 +42,9 @@ const darkStyles = {
   // }),
 };
 
-const seasonsOptions = [
-  { value: 1, label: "Principios de año" },
-  { value: 2, label: "Mediados de año" },
-];
-
 export const Filter = () => {
   const [dataUrls, setDataUrls] = useState([]);
   const [yearValue, setYearValue] = useState();
-  const [seasonValue, setSeasonValue] = useState(1);
   const [filteredDataUrls, setFilteredDataUrls] = useState([]);
 
   const examsSectionRef = useRef(null);
@@ -59,16 +53,9 @@ export const Filter = () => {
     const unsubscribe = onSnapshot(collection(db, "dataUrls"), (snapshot) => {
       const dataUrls = snapshot.docs
         .map((doc) => ({ ...doc.data(), dataId: doc.id }))
-        .sort((a, b) => {
-          if (a.examUrl < b.examUrl) {
-            return -1;
-          } else if (a.examUrl > b.examUrl) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
+        .sort((a, b) => a.dataId.localeCompare(b.dataId));
       setDataUrls(dataUrls);
+      setYearValue(dataUrls.at(-1)?.year);
     });
 
     return () => unsubscribe();
@@ -77,14 +64,11 @@ export const Filter = () => {
   useEffect(() => {
     if (yearValue) {
       setFilteredDataUrls(
-        dataUrls.filter(
-          (dataUrl) =>
-            dataUrl.year === yearValue && dataUrl.semester === seasonValue
-        )
+        dataUrls.filter((dataUrl) => dataUrl.year === yearValue)
       );
       examsSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [dataUrls, yearValue, seasonValue]);
+  }, [dataUrls, yearValue]);
 
   const yearsOptions = useMemo(
     () =>
@@ -116,19 +100,6 @@ export const Filter = () => {
           value={yearsOptions.find((option) => option.value === yearValue)}
           onChange={(option) => setYearValue(option.value)}
         />
-        {yearValue && (
-          <Select
-            styles={darkStyles}
-            options={seasonsOptions}
-            isSearchable={false}
-            className="w-1/2"
-            placeholder="Temporada"
-            value={seasonsOptions.find(
-              (option) => option.value === seasonValue
-            )}
-            onChange={(option) => setSeasonValue(option.value)}
-          />
-        )}
       </section>
       {filteredDataUrls.length > 0 ? (
         <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
