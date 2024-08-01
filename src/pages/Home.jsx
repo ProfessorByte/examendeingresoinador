@@ -4,10 +4,12 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
   return (
-    <>
-      <Banner />
-      <Filter />
+    <div className="min-h-dvh flex flex-col justify-between">
+      <section>
+        <Banner />
+        <Filter />
+      </section>
       <Footer />
-    </>
+    </div>
   );
 };
