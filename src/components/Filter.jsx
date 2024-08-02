@@ -1,9 +1,26 @@
-import { useState, useEffect, useMemo, useRef } from "react";
-import { db } from "../services/database";
+import { useState, useEffect, useRef } from "react";
 import Select from "react-select";
-import { collection, onSnapshot } from "firebase/firestore";
 import { ExamCard } from "./ExamCard";
-import { ExamDateIcon } from "../assets/Icons";
+
+import validUrls from "../data/validUrls.json";
+
+const dataUrls = validUrls
+  .map((dataExam) => ({
+    ...dataExam,
+    dataId: `${dataExam.year}-${dataExam.semester}-${dataExam.idResource}-${dataExam.formVersion}`,
+  }))
+  .sort((a, b) => a.dataId.localeCompare(b.dataId));
+
+const yearsOptions = dataUrls
+  .map((dataUrl) => ({
+    value: dataUrl.year,
+    label: dataUrl.year,
+  }))
+  .filter(
+    (element, index, self) =>
+      self.findIndex((t) => t.value === element.value) === index
+  )
+  .sort((a, b) => b.value - a.value);
 
 const darkStyles = {
   control: (styles) => ({
@@ -43,47 +60,27 @@ const darkStyles = {
 };
 
 export const Filter = () => {
-  const [dataUrls, setDataUrls] = useState([]);
-  const [yearValue, setYearValue] = useState();
-  const [filteredDataUrls, setFilteredDataUrls] = useState([]);
+  const [yearHasChanged, setYearHasChanged] = useState(false);
+  const [filteredDataUrls, setFilteredDataUrls] = useState(
+    dataUrls.filter((dataUrl) => dataUrl.year === dataUrls.at(-1).year)
+  );
 
-  const examsSectionRef = useRef(null);
-
-  useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "dataUrls"), (snapshot) => {
-      const dataUrls = snapshot.docs
-        .map((doc) => ({ ...doc.data(), dataId: doc.id }))
-        .sort((a, b) => a.dataId.localeCompare(b.dataId));
-      setDataUrls(dataUrls);
-      setYearValue(dataUrls.at(-1)?.year);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const examsSectionRef = useRef();
 
   useEffect(() => {
-    if (yearValue) {
-      setFilteredDataUrls(
-        dataUrls.filter((dataUrl) => dataUrl.year === yearValue)
-      );
+    if (yearHasChanged && examsSectionRef.current) {
       examsSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [dataUrls, yearValue]);
+  }, [filteredDataUrls, yearHasChanged]);
 
-  const yearsOptions = useMemo(
-    () =>
-      dataUrls
-        .map((dataUrl) => ({
-          value: dataUrl.year,
-          label: dataUrl.year,
-        }))
-        .filter(
-          (element, index, self) =>
-            self.findIndex((t) => t.value === element.value) === index
-        )
-        .sort((a, b) => b.value - a.value),
-    [dataUrls]
-  );
+  const handleYearChange = (option) => {
+    const { value: currentYear } = option;
+
+    setFilteredDataUrls(
+      dataUrls.filter((dataUrl) => dataUrl.year === currentYear)
+    );
+    setYearHasChanged(true);
+  };
 
   return (
     <>
@@ -97,26 +94,16 @@ export const Filter = () => {
           isSearchable={false}
           className="w-1/2"
           placeholder="Año"
-          value={yearsOptions.find((option) => option.value === yearValue)}
-          onChange={(option) => setYearValue(option.value)}
+          defaultValue={yearsOptions[0]}
+          onChange={handleYearChange}
         />
       </section>
-      {filteredDataUrls.length > 0 ? (
-        <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
-          {filteredDataUrls.map((dataUrl) => (
-            <ExamCard key={dataUrl.dataId} {...dataUrl} />
-          ))}
-        </main>
-      ) : (
-        <main className="flex justify-center flex-col items-center gap-3 mx-auto md:max-w-[60%] my-9 p-6">
-          <ExamDateIcon width={128} height={128} fill="#f3f4f6" />
-          <p className="text-2xl text-center font-semibold text-brand-white">
-            {yearValue
-              ? "No hay exámenes para el periodo seleccionado"
-              : "Selecciona un año para ver los exámenes disponibles"}
-          </p>
-        </main>
-      )}
+
+      <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
+        {filteredDataUrls.map((dataUrl) => (
+          <ExamCard key={dataUrl.dataId} {...dataUrl} />
+        ))}
+      </main>
     </>
   );
 };
