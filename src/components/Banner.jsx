@@ -4,7 +4,7 @@ export const Banner = () => {
       <img
         src="/logo.webp"
         alt="Logo con el título Examen de Ingreso-inador"
-        className="w-96 rounded-3xl aspect-[27/20"
+        className="w-96 rounded-3xl"
       />
     </header>
   );
