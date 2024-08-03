@@ -29,10 +29,15 @@ export default {
           "90%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(100%)" },
         },
+        fadeDown: {
+          "0%": { opacity: 0, transform: "translateY(-30%)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
       },
       animation: {
         slideFromRight:
           "slideFromRight 3s cubic-bezier(0.5, 1.6, 0.4, 0.7) forwards",
+        fadeDown: "fadeDown 1.2s ease-in-out",
       },
     },
   },
