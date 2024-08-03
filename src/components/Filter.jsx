@@ -1,15 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Select from "react-select";
 import { ExamCard } from "./ExamCard";
+import { FilterContext } from "../context/FilterContext";
 
-import validUrls from "../data/validUrls.json";
-
-const dataUrls = validUrls
-  .map((dataExam) => ({
-    ...dataExam,
-    dataId: `${dataExam.year}-${dataExam.semester}-${dataExam.idResource}-${dataExam.formVersion}`,
-  }))
-  .sort((a, b) => a.dataId.localeCompare(b.dataId));
+import { dataUrls } from "../data/util";
 
 const yearsOptions = dataUrls
   .map((dataUrl) => ({
@@ -60,9 +54,11 @@ const darkStyles = {
 };
 
 export const Filter = () => {
+  const { year, setYear } = useContext(FilterContext);
+
   const [yearHasChanged, setYearHasChanged] = useState(false);
   const [filteredDataUrls, setFilteredDataUrls] = useState(
-    dataUrls.filter((dataUrl) => dataUrl.year === dataUrls.at(-1).year)
+    dataUrls.filter((dataUrl) => dataUrl.year === year)
   );
 
   const examsSectionRef = useRef();
@@ -79,6 +75,7 @@ export const Filter = () => {
     setFilteredDataUrls(
       dataUrls.filter((dataUrl) => dataUrl.year === currentYear)
     );
+    setYear(currentYear);
     setYearHasChanged(true);
   };
 
@@ -94,7 +91,7 @@ export const Filter = () => {
           isSearchable={false}
           className="w-1/2"
           placeholder="Año"
-          defaultValue={yearsOptions[0]}
+          defaultValue={{ value: year, label: year }}
           onChange={handleYearChange}
         />
       </section>
