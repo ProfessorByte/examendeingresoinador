@@ -4,7 +4,6 @@ import { ErrorCountdown } from "../assets/ErrorCountdown";
 import { Viewer } from "@react-pdf-viewer/core";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
-import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
@@ -14,7 +13,7 @@ const urlExamTemplate =
 const urlSolutionTemplate =
   "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/solucionario/{YEAR}-{SEMESTER}-{ID}/1/6-{FORM_VERSION}/0.pdf";
 
-export const PdfPage = ({ pdfContentLabel }) => {
+export const PdfPage = ({ pdfContentLabel, dataId }) => {
   const [showCover, setShowCover] = useState(false);
 
   const handleDocumentLoad = () => {
@@ -23,8 +22,6 @@ export const PdfPage = ({ pdfContentLabel }) => {
       setShowCover(false);
     }, 3000);
   };
-
-  const { dataId } = useParams();
 
   const fileNameGenerator = () =>
     pdfContentLabel === "exam" ? `Preguntas_${dataId}` : `Respuestas_${dataId}`;
@@ -84,4 +81,5 @@ export const PdfPage = ({ pdfContentLabel }) => {
 
 PdfPage.propTypes = {
   pdfContentLabel: PropTypes.oneOf(["exam", "solution"]).isRequired,
+  dataId: PropTypes.string.isRequired,
 };
