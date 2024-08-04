@@ -1,9 +1,20 @@
-import { useState, useEffect, useMemo, useRef } from "react";
-import { db } from "../services/database";
+import { useState, useEffect, useRef, useContext } from "react";
 import Select from "react-select";
-import { collection, onSnapshot } from "firebase/firestore";
-import { ExamCard } from "./ExamCard";
-import { ExamDateIcon } from "../assets/Icons";
+import { FilterContext } from "../context/FilterContext";
+
+import { dataUrls } from "../data/util";
+import { CardsContainer } from "./CardsContainer";
+
+const yearsOptions = dataUrls
+  .map((dataUrl) => ({
+    value: dataUrl.year,
+    label: dataUrl.year,
+  }))
+  .filter(
+    (element, index, self) =>
+      self.findIndex((t) => t.value === element.value) === index
+  )
+  .sort((a, b) => b.value - a.value);
 
 const darkStyles = {
   control: (styles) => ({
@@ -42,69 +53,36 @@ const darkStyles = {
   // }),
 };
 
-const seasonsOptions = [
-  { value: 1, label: "Principios de año" },
-  { value: 2, label: "Mediados de año" },
-];
-
 export const Filter = () => {
-  const [dataUrls, setDataUrls] = useState([]);
-  const [yearValue, setYearValue] = useState();
-  const [seasonValue, setSeasonValue] = useState(1);
-  const [filteredDataUrls, setFilteredDataUrls] = useState([]);
+  const { year, setYear } = useContext(FilterContext);
 
-  const examsSectionRef = useRef(null);
+  const [yearHasChanged, setYearHasChanged] = useState(false);
+  const [filteredDataUrls, setFilteredDataUrls] = useState(
+    dataUrls.filter((dataUrl) => dataUrl.year === year)
+  );
 
-  useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "dataUrls"), (snapshot) => {
-      const dataUrls = snapshot.docs
-        .map((doc) => ({ ...doc.data(), dataId: doc.id }))
-        .sort((a, b) => {
-          if (a.examUrl < b.examUrl) {
-            return -1;
-          } else if (a.examUrl > b.examUrl) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-      setDataUrls(dataUrls);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const examsSectionRef = useRef();
 
   useEffect(() => {
-    if (yearValue) {
-      setFilteredDataUrls(
-        dataUrls.filter(
-          (dataUrl) =>
-            dataUrl.year === yearValue && dataUrl.semester === seasonValue
-        )
-      );
+    if (yearHasChanged && examsSectionRef.current) {
       examsSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [dataUrls, yearValue, seasonValue]);
+  }, [filteredDataUrls, yearHasChanged]);
 
-  const yearsOptions = useMemo(
-    () =>
-      dataUrls
-        .map((dataUrl) => ({
-          value: dataUrl.year,
-          label: dataUrl.year,
-        }))
-        .filter(
-          (element, index, self) =>
-            self.findIndex((t) => t.value === element.value) === index
-        )
-        .sort((a, b) => b.value - a.value),
-    [dataUrls]
-  );
+  const handleYearChange = (option) => {
+    const { value: currentYear } = option;
+
+    setFilteredDataUrls(
+      dataUrls.filter((dataUrl) => dataUrl.year === currentYear)
+    );
+    setYear(currentYear);
+    setYearHasChanged(true);
+  };
 
   return (
     <>
       <section
-        className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%] mt-9 p-6"
+        className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%]"
         ref={examsSectionRef}
       >
         <Select
@@ -113,39 +91,12 @@ export const Filter = () => {
           isSearchable={false}
           className="w-1/2"
           placeholder="Año"
-          value={yearsOptions.find((option) => option.value === yearValue)}
-          onChange={(option) => setYearValue(option.value)}
+          defaultValue={{ value: year, label: year }}
+          onChange={handleYearChange}
         />
-        {yearValue && (
-          <Select
-            styles={darkStyles}
-            options={seasonsOptions}
-            isSearchable={false}
-            className="w-1/2"
-            placeholder="Temporada"
-            value={seasonsOptions.find(
-              (option) => option.value === seasonValue
-            )}
-            onChange={(option) => setSeasonValue(option.value)}
-          />
-        )}
       </section>
-      {filteredDataUrls.length > 0 ? (
-        <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
-          {filteredDataUrls.map((dataUrl) => (
-            <ExamCard key={dataUrl.dataId} {...dataUrl} />
-          ))}
-        </main>
-      ) : (
-        <main className="flex justify-center flex-col items-center gap-3 mx-auto md:max-w-[60%] my-9 p-6">
-          <ExamDateIcon width={128} height={128} fill="#f3f4f6" />
-          <p className="text-2xl text-center font-semibold text-brand-white">
-            {yearValue
-              ? "No hay exámenes para el periodo seleccionado"
-              : "Selecciona un año para ver los exámenes disponibles"}
-          </p>
-        </main>
-      )}
+
+      <CardsContainer filteredDataUrls={filteredDataUrls} />
     </>
   );
 };
