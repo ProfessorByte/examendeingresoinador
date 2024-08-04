@@ -3,7 +3,7 @@ import { PdfPage } from "../components/PdfPage";
 import { Gutter } from "../components/Gutter";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "react-router-dom";
-import { useTitle } from "../hooks/useTitle";
+import { useSEO } from "../hooks/useSEO";
 import Split from "react-split-grid";
 
 export const ExamSolutionSplit = () => {
@@ -30,7 +30,7 @@ export const ExamSolutionSplit = () => {
     };
   }, []);
 
-  useTitle({ dataId });
+  useSEO({ dataId });
 
   const setSplitProps = (direction) => {
     if (direction === "row") {
