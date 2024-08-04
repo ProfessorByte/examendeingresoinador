@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { PdfPage } from "../components/PdfPage";
 import { Gutter } from "../components/Gutter";
 import { Worker } from "@react-pdf-viewer/core";
+import { useParams } from "react-router-dom";
+import { useTitle } from "../hooks/useTitle";
 import Split from "react-split-grid";
 
 export const ExamSolutionSplit = () => {
@@ -9,6 +11,8 @@ export const ExamSolutionSplit = () => {
   const [directionSplit, setDirectionSplit] = useState(
     window.innerWidth < 768 ? "row" : "column"
   );
+
+  const { dataId } = useParams();
 
   const containerRef = useRef(null);
 
@@ -25,6 +29,8 @@ export const ExamSolutionSplit = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useTitle({ dataId });
 
   const setSplitProps = (direction) => {
     if (direction === "row") {
@@ -56,13 +62,13 @@ export const ExamSolutionSplit = () => {
         onDrag={handleDrag}
         render={({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()} ref={containerRef}>
-            <PdfPage pdfContentLabel="exam" />
+            <PdfPage pdfContentLabel="exam" dataId={dataId} />
             <Gutter
               direction={directionSplit}
               getGutterProps={getGutterProps}
               track={1}
             />
-            <PdfPage pdfContentLabel="solution" />
+            <PdfPage pdfContentLabel="solution" dataId={dataId} />
           </div>
         )}
       />
