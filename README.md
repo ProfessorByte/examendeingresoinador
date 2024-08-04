@@ -26,7 +26,6 @@ Follow these steps to get the project up and running on your local machine.
 
 - Node.js
 - npm or pnpm
-- Firebase account
 
 ### How to run the project
 
@@ -38,11 +37,7 @@ Follow these steps to get the project up and running on your local machine.
    pnpm install
    ```
 
-2. **Configure the `.env` file:**
-
-   You must have a Firebase project where you have migrated the data from the entrance exams into a `dataUrls` collection using the [Pseudocrawler](https://github.com/ProfessorByte/FCyT_UMSS_ExamsPseudocrawler). You must enter the connection data for your Firebase project in an `.env` file, guided by the `.env.template` file found in this project.
-
-3. **Running the Application:**
+2. **Running the Application:**
 
    To start the development server, run:
 
@@ -52,7 +47,7 @@ Follow these steps to get the project up and running on your local machine.
 
    This will open the application in your default browser at http://localhost:5173.
 
-4. **Building for Production**
+3. **Building for Production**
 
    To create a production build, run:
 
@@ -61,7 +56,5 @@ Follow these steps to get the project up and running on your local machine.
    ```
 
    The production-ready files will be in the `dist` folder.
-
-   After creating the build YOU SHOULD NOT FORGET to uncomment and delete the `TODO`, as indicated in the `index.html` file, this action must be performed in the `index.html` file in the `dist` folder. Do not perform this action in the `index.html` file located at the root of the project, only do it in the production build file.
 
 Happy coding! If you have any questions, feel free to reach out.
