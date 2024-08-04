@@ -33,11 +33,16 @@ export default {
           "0%": { opacity: 0, transform: "translateY(-30%)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        fadeRight: {
+          "0%": { opacity: 0, transform: "translateX(-18%)" },
+          "100%": { opacity: 1, transform: "translateX(0)" },
+        },
       },
       animation: {
         slideFromRight:
           "slideFromRight 3s cubic-bezier(0.5, 1.6, 0.4, 0.7) forwards",
-        fadeDown: "fadeDown 1.2s ease-in-out",
+        fadeDown: "fadeDown 1.2s ease-in-out forwards",
+        fadeRight: "fadeRight 300ms ease-in forwards",
       },
     },
   },

@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 export const CardsContainer = ({ filteredDataUrls }) => {
   return (
     <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
-      {filteredDataUrls.map((dataUrl) => (
-        <ExamCard key={dataUrl.dataId} {...dataUrl} />
+      {filteredDataUrls.map((dataUrl, index) => (
+        <ExamCard key={dataUrl.dataId} index={index} {...dataUrl} />
       ))}
     </main>
   );

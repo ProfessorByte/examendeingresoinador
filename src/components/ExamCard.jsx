@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const ExamCard = ({
+  index,
   idResource,
   formVersion,
   semester,
@@ -10,7 +11,8 @@ export const ExamCard = ({
 }) => {
   return (
     <Link
-      className="block relative p-6 bg-brand-gray rounded-lg border border-solid border-brand-darkwhite shadow-lg shadow-black z-0 overflow-hidden before:absolute before:-z-10 before:-bottom-4 before:-right-4 before:bg-brand-darkgreen before:size-8 before:rounded-full before:transition-transform before:duration-[600ms] before:ease-out hover:before:scale-[30]"
+      className="block relative p-6 bg-brand-gray rounded-lg border border-solid border-brand-darkwhite shadow-lg shadow-black z-0 overflow-hidden before:absolute before:-z-10 before:-bottom-4 before:-right-4 before:bg-brand-darkgreen before:size-8 before:rounded-full before:transition-transform before:duration-[600ms] before:ease-out hover:before:scale-[30] opacity-0 animate-fadeRight"
+      style={{ animationDelay: `${index * 36}ms` }}
       to={`/exams/${dataId}`}
     >
       <h3 className="text-2xl font-semibold">
@@ -26,6 +28,7 @@ export const ExamCard = ({
 };
 
 ExamCard.propTypes = {
+  index: PropTypes.number.isRequired,
   idResource: PropTypes.number.isRequired,
   formVersion: PropTypes.number.isRequired,
   semester: PropTypes.number.isRequired,
