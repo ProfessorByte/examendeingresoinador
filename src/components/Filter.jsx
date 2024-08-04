@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import Select from "react-select";
-import { ExamCard } from "./ExamCard";
 import { FilterContext } from "../context/FilterContext";
 
 import { dataUrls } from "../data/util";
+import { CardsContainer } from "./CardsContainer";
 
 const yearsOptions = dataUrls
   .map((dataUrl) => ({
@@ -96,11 +96,7 @@ export const Filter = () => {
         />
       </section>
 
-      <main className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] my-9 p-6">
-        {filteredDataUrls.map((dataUrl) => (
-          <ExamCard key={dataUrl.dataId} {...dataUrl} />
-        ))}
-      </main>
+      <CardsContainer filteredDataUrls={filteredDataUrls} />
     </>
   );
 };
