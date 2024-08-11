@@ -12,7 +12,7 @@ Welcome to the Examen de Ingreso-inador! This project is designed to provide an 
 
 ## Live Deployment
 
-You can check out the live deployment of the project [here](https://examendeingresoinador.web.app).
+You can check out the live deployment of the project [here](https://examendeingresoinador.pages.dev).
 
 ## Data Collection
 
