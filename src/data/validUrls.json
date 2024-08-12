@@ -846,5 +846,13 @@
     "semester": 1,
     "formVersion": 2,
     "idResource": 649
+  },
+  {
+    "examUrl": "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/examenes/2024-2-655/1/6-1.pdf",
+    "solutionUrl": "http://sagaa.fcyt.umss.edu.bo/adm_academica/archivos/solucionario/2024-2-655/1/6-1/0.pdf",
+    "year": 2024,
+    "semester": 2,
+    "formVersion": 1,
+    "idResource": 655
   }
 ]
