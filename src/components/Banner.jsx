@@ -6,7 +6,6 @@ export const Banner = () => {
         alt="Logo con el título Examen de Ingreso-inador"
         className="w-96 rounded-3xl animate-fadeDown"
       />
-      <h1 className="hidden">Examen de Ingreso-inador</h1>
     </header>
   );
 };
