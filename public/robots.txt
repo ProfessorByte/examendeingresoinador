@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://examendeingresoinador.pages.dev/sitemap.xml
-Host: https://examendeingresoinador.pages.dev
