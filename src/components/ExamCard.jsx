@@ -15,10 +15,10 @@ export const ExamCard = ({
       style={{ animationDelay: `${index * 36}ms` }}
       to={`/exams/${dataId}`}
     >
-      <h3 className="text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold">
         {`Examen de Ingreso #${idResource}`}
-      </h3>
-      <h4 className="text-xl font-semibold">{`Variante ${formVersion}`}</h4>
+      </h2>
+      <h3 className="text-xl font-semibold">{`Variante ${formVersion}`}</h3>
       <p className="text-sm text-brand-darkwhite mt-2">{`Gestión ${semester}-${year}`}</p>
       <div className="flex items-center justify-center absolute size-8 overflow-hidden bottom-0 right-0 bg-brand-darkgreen rounded-[32px_0_8px_0]">
         <div className="-mb-1.5 -mr-1.5">→</div>

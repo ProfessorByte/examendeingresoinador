@@ -85,7 +85,11 @@ export const Filter = () => {
         className="flex justify-center items-center gap-3 mx-auto md:max-w-[60%]"
         ref={examsSectionRef}
       >
+        <label htmlFor="yearSelect" className="sr-only">
+          Filtrar por año:
+        </label>
         <Select
+          inputId="yearSelect"
           styles={darkStyles}
           options={yearsOptions}
           isSearchable={false}
