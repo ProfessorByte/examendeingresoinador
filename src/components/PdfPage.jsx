@@ -52,7 +52,7 @@ export const PdfPage = ({ pdfContentLabel, dataId }) => {
           <ZoomPopover />
           <ZoomInButton />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 flex justify-start">
           <DownloadButton />
         </div>
       </div>
