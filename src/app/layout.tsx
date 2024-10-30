@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { nunito } from "@/utils/fonts";
 
 const pageData = {
   title: "Examen de Ingreso-inador",
@@ -65,7 +66,9 @@ export default function RootLayout({
           content="ZE7wOzJUJXqowqy_3ufsabYa5hFEpWedyNTbD7rtnTU"
         />
       </head>
-      <body className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+      <body
+        className={`${nunito.className} antialiased min-h-screen grid grid-rows-[auto_1fr_auto]`}
+      >
         {children}
       </body>
     </html>
