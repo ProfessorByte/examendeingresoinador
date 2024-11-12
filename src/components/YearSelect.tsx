@@ -2,20 +2,19 @@
 
 import Select, { SingleValue, GroupBase, StylesConfig } from "react-select";
 import {
-  useSearchParams,
   usePathname,
   useRouter,
   ReadonlyURLSearchParams,
 } from "next/navigation";
-import { useState } from "react";
-
-interface OptionType {
-  value: number;
-  label: number;
-}
+import { useRef } from "react";
+import { OptionType } from "@/utils/interfaces";
+import { NavigateOptions } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface YearSelectProps {
   yearsOptions: OptionType[];
+  searchParams: ReadonlyURLSearchParams;
+  selectedYear: OptionType;
+  setSelectedYear: (year: OptionType) => void;
 }
 
 const darkStyles: StylesConfig<
@@ -65,49 +64,41 @@ const darkStyles: StylesConfig<
   // }),
 };
 
-const isValidYear = (year: number, yearsOptions: OptionType[]) =>
-  yearsOptions.some((option) => option.value === year);
-
-const getYearFromURL = (
-  yearsOptions: OptionType[],
-  searchParams: ReadonlyURLSearchParams
-) => {
-  const year = Number(searchParams.get("year"));
-  if (isValidYear(year, yearsOptions)) {
-    return { value: year, label: year };
-  }
-  return yearsOptions[0];
-};
-
 const updateYearInURL = (
   year: OptionType,
   pathname: string,
   searchParams: ReadonlyURLSearchParams,
-  replace: (href: string) => void
+  replace: (href: string, options?: NavigateOptions) => void
 ) => {
   const params = new URLSearchParams(searchParams);
   params.set("year", year.value.toString());
-  replace(`${pathname}?${params.toString()}`);
+  replace(`${pathname}?${params.toString()}`, { scroll: false });
 };
 
-export const YearSelect = ({ yearsOptions }: YearSelectProps) => {
-  const searchParams = useSearchParams();
+export const YearSelect = ({
+  yearsOptions,
+  searchParams,
+  selectedYear,
+  setSelectedYear,
+}: YearSelectProps) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const [selectedYear, setSelectedYear] = useState(
-    getYearFromURL(yearsOptions, searchParams)
-  );
+  const selectSectionRef = useRef<HTMLDivElement>(null);
 
   const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
-    if (selectedOption) {
+    if (selectedOption && selectSectionRef.current) {
       setSelectedYear(selectedOption);
+      selectSectionRef.current.scrollIntoView({ behavior: "smooth" });
       updateYearInURL(selectedOption, pathname, searchParams, replace);
     }
   };
 
   return (
-    <section className="flex justify-center items-center mx-auto md:max-w-[60%]">
+    <section
+      className="flex justify-center items-center mx-auto md:max-w-[60%]"
+      ref={selectSectionRef}
+    >
       <label htmlFor="yearSelect" className="sr-only">
         Filtrar por año:
       </label>
