@@ -1,20 +1,11 @@
-"use client";
-
-import Select, { SingleValue, GroupBase, StylesConfig } from "react-select";
-import {
-  usePathname,
-  useRouter,
-  ReadonlyURLSearchParams,
-} from "next/navigation";
+import Select, { GroupBase, SingleValue, StylesConfig } from "react-select";
 import { useRef } from "react";
 import { OptionType } from "@/utils/interfaces";
-import { NavigateOptions } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface YearSelectProps {
   yearsOptions: OptionType[];
-  searchParams: ReadonlyURLSearchParams;
   selectedYear: OptionType;
-  setSelectedYear: (year: OptionType) => void;
+  updateYearInURL: (selectedOption: number) => void;
 }
 
 const darkStyles: StylesConfig<
@@ -64,33 +55,17 @@ const darkStyles: StylesConfig<
   // }),
 };
 
-const updateYearInURL = (
-  year: OptionType,
-  pathname: string,
-  searchParams: ReadonlyURLSearchParams,
-  replace: (href: string, options?: NavigateOptions) => void
-) => {
-  const params = new URLSearchParams(searchParams);
-  params.set("year", year.value.toString());
-  replace(`${pathname}?${params.toString()}`, { scroll: false });
-};
-
 export const YearSelect = ({
   yearsOptions,
-  searchParams,
   selectedYear,
-  setSelectedYear,
+  updateYearInURL,
 }: YearSelectProps) => {
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
   const selectSectionRef = useRef<HTMLDivElement>(null);
 
   const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption && selectSectionRef.current) {
-      setSelectedYear(selectedOption);
+      updateYearInURL(selectedOption.value);
       selectSectionRef.current.scrollIntoView({ behavior: "smooth" });
-      updateYearInURL(selectedOption, pathname, searchParams, replace);
     }
   };
 
@@ -110,7 +85,7 @@ export const YearSelect = ({
         isSearchable={false}
         className="w-1/2"
         placeholder="Año"
-        value={selectedYear}
+        defaultValue={selectedYear}
         onChange={handleYearChange}
       />
     </section>

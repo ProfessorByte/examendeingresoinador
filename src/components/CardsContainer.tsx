@@ -1,12 +1,15 @@
 import { Exam, OptionType } from "@/utils/interfaces";
 import { ExamCard } from "./ExamCard";
 
-interface ExamCardsProps {
+interface CardsContainerProps {
   examsData: Exam[];
   selectedYear: OptionType;
 }
 
-export const CardsContainer = ({ examsData, selectedYear }: ExamCardsProps) => {
+export const CardsContainer = ({
+  examsData,
+  selectedYear,
+}: CardsContainerProps) => {
   const filteredExams = examsData.filter(
     (exam) => exam.year === selectedYear.value
   );
