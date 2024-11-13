@@ -1,5 +1,5 @@
 import Select, { GroupBase, SingleValue, StylesConfig } from "react-select";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OptionType } from "@/utils/interfaces";
 
 interface YearSelectProps {
@@ -61,6 +61,25 @@ export const YearSelect = ({
   updateYearInURL,
 }: YearSelectProps) => {
   const selectSectionRef = useRef<HTMLDivElement>(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const selectSectionElement = selectSectionRef.current;
+      if (selectSectionElement) {
+        const rect = selectSectionElement.getBoundingClientRect();
+        const isAtTop = rect.top <= 0;
+        setIsSticky(isAtTop);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption && selectSectionRef.current) {
@@ -71,7 +90,9 @@ export const YearSelect = ({
 
   return (
     <section
-      className="flex justify-center items-center mx-auto md:max-w-[60%]"
+      className={`sticky top-0 flex justify-center items-center mx-auto z-10 py-3 transition-colors duration-300 ease-in-out ${
+        isSticky ? "backdrop-blur-sm bg-brand-black/75" : "bg-transparent"
+      }`}
       ref={selectSectionRef}
     >
       <label htmlFor="yearSelect" className="sr-only">
@@ -83,7 +104,7 @@ export const YearSelect = ({
         styles={darkStyles}
         options={yearsOptions}
         isSearchable={false}
-        className="w-1/2"
+        className="w-10/12 max-w-[369px]"
         placeholder="Año"
         defaultValue={selectedYear}
         onChange={handleYearChange}
