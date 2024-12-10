@@ -9,7 +9,7 @@ export const Hero = () => {
         className="rounded-3xl animate-fadeDown"
         width={384}
         height={284}
-        priority={true}
+        priority
       />
       <h1 className="sr-only">
         Examen de Ingreso-inador: Encuentra exámenes pasados para ingresar a la

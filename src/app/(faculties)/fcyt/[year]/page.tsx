@@ -1,0 +1,43 @@
+import { CardsContainer } from "@/components/CardsContainer";
+import { YearSelect } from "@/components/YearSelect";
+import { isValidYear } from "@/utils/functions";
+import { Exam, OptionType } from "@/utils/interfaces";
+import { getExamsData } from "@/utils/services";
+import { redirect } from "next/navigation";
+
+const examsData: Exam[] = await getExamsData();
+
+const yearsOptions: OptionType[] = [
+  ...new Set(examsData.map((exam) => exam.year)),
+]
+  .sort((a, b) => b - a)
+  .map((year) => ({ value: year, label: year }));
+
+interface FcytPageProps {
+  params: Promise<{
+    year: string;
+  }>;
+}
+
+export default async function FcytPage({ params }: FcytPageProps) {
+  const { year } = await params;
+  const selectedYear = Number(year);
+
+  if (!isValidYear(selectedYear, yearsOptions))
+    redirect(`/fcyt/${yearsOptions[0].value}`);
+
+  const selectedYearOption: OptionType = {
+    value: selectedYear,
+    label: selectedYear,
+  };
+
+  return (
+    <main>
+      <YearSelect
+        yearsOptions={yearsOptions}
+        selectedYear={selectedYearOption}
+      />
+      <CardsContainer examsData={examsData} selectedYear={selectedYearOption} />
+    </main>
+  );
+}
