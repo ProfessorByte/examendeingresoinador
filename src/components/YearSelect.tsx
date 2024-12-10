@@ -1,12 +1,9 @@
+"use client";
+
 import Select, { GroupBase, SingleValue, StylesConfig } from "react-select";
 import { useEffect, useRef, useState } from "react";
 import { OptionType } from "@/utils/interfaces";
-
-interface YearSelectProps {
-  yearsOptions: OptionType[];
-  selectedYear: OptionType;
-  updateYearInURL: (selectedOption: number) => void;
-}
+import { useYear } from "@/hooks/useYear";
 
 const darkStyles: StylesConfig<
   {
@@ -55,13 +52,16 @@ const darkStyles: StylesConfig<
   // }),
 };
 
-export const YearSelect = ({
-  yearsOptions,
-  selectedYear,
-  updateYearInURL,
-}: YearSelectProps) => {
+interface YearSelectProps {
+  yearsOptions: OptionType[];
+  selectedYear: OptionType;
+}
+
+export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
   const selectSectionRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
+
+  const { updateYearInURL } = useYear();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,9 +82,9 @@ export const YearSelect = ({
   }, []);
 
   const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
-    if (selectedOption && selectSectionRef.current) {
+    if (selectedOption) {
       updateYearInURL(selectedOption.value);
-      selectSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      // selectSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
