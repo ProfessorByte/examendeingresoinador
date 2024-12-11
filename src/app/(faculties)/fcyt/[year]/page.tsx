@@ -13,6 +13,17 @@ const yearsOptions: OptionType[] = [
   .sort((a, b) => b - a)
   .map((year) => ({ value: year, label: year }));
 
+export function generateStaticParams() {
+  return [
+    ...yearsOptions.map((yearOption) => ({
+      year: yearOption.value.toString(),
+    })),
+    { year: "darkmind" },
+  ];
+}
+
+export const dynamicParams = false;
+
 interface FcytPageProps {
   params: Promise<{
     year: string;
