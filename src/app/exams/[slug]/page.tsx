@@ -1,13 +1,19 @@
-interface ExamsPageParams {
-  slug: string;
+import { getExamsData } from "@/utils/services";
+import { permanentRedirect } from "next/navigation";
+
+export async function generateStaticParams() {
+  const examsData = await getExamsData();
+  return examsData.map((exam) => ({ slug: exam.slug }));
 }
 
-export default async function ExamsPage({
-  params,
-}: {
-  params: Promise<ExamsPageParams>;
-}) {
-  const slug = (await params).slug;
+export const dynamicParams = false;
 
-  return <p>{slug}</p>;
+interface ExamsRedirectPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function ExamsRedirectPage({
+  params,
+}: ExamsRedirectPageProps) {
+  permanentRedirect(`/exams/fcyt/${(await params).slug}`);
 }

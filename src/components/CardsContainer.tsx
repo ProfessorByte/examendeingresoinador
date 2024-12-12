@@ -17,9 +17,8 @@ export const CardsContainer = ({
   return (
     <section className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] mt-6 mb-9 p-6">
       {filteredExams.map((exam, index) => {
-        const { year, semester, idResource, formVersion } = exam;
-        const slug = `${year}-${semester}-${idResource}-${formVersion}`;
-        return <ExamCard key={slug} slug={slug} index={index} {...exam} />;
+        const { slug } = exam;
+        return <ExamCard key={slug} index={index} {...exam} />;
       })}
     </section>
   );

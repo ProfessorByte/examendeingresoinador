@@ -1,4 +1,5 @@
 export interface Exam {
+  slug: string;
   examUrl: string;
   solutionUrl: string;
   year: number;

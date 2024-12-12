@@ -1,4 +1,6 @@
-export const getExamsData = async () => {
+import type { Exam } from "./interfaces";
+
+export const getExamsData = async (): Promise<Exam[]> => {
   const response = await fetch(
     "https://raw.githubusercontent.com/ProfessorByte/FCyT_UMSS_ExamsPseudocrawler/refs/heads/main/validUrls.json"
   );
