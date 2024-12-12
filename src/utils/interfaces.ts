@@ -12,3 +12,5 @@ export interface OptionType {
   value: number;
   label: number;
 }
+
+export type Direction = "row" | "column";

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "@/app/globals.css";
 import { nunito } from "@/utils/fonts";
+import "@/app/globals.css";
 
 const pageData = {
   title: "Examen de Ingreso-inador",

@@ -1,15 +1,33 @@
-"use client";
+import { ExamSolutionSplit } from "@/components/ExamSolutionSplit";
+import { getPdfBlob } from "@/utils/services";
 
-import { useParams } from "next/navigation";
-// import { useState } from "react";
+const examsUrlTemplate =
+  "https://raw.githubusercontent.com/ProfessorByte/science-exams-crawler/refs/heads/main/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf";
 
-export default function ExamsPage() {
-  // const [gridTemplate, setGridTemplate] = useState("1fr 18px 1fr");
-  // const [directionSplit, setDirectionSplit] = useState(
-  //   window.innerWidth < 768 ? "row" : "column"
-  // );
+interface ExamsPageProps {
+  params: Promise<{ slug: string }>;
+}
 
-  const { slug } = useParams<{ slug: string }>();
+export default async function ExamsPage({ params }: ExamsPageProps) {
+  const { slug } = await params;
 
-  return <p>{slug}</p>;
+  const [examPdfBlob, solutionPdfBlob] = await Promise.all([
+    getPdfBlob(
+      examsUrlTemplate
+        .replace(/{SLUG}/g, slug)
+        .replace("{CONTENT_LABEL}", "Preguntas")
+    ),
+    getPdfBlob(
+      examsUrlTemplate
+        .replace(/{SLUG}/g, slug)
+        .replace("{CONTENT_LABEL}", "Respuestas")
+    ),
+  ]);
+
+  return (
+    <ExamSolutionSplit
+      examPdfBlob={examPdfBlob}
+      solutionPdfBlob={solutionPdfBlob}
+    />
+  );
 }
