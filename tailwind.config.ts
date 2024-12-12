@@ -17,10 +17,6 @@ const config: Config = {
         "brand-darkwhite": "#c9c9c9",
         "brand-darkgreen": "#00838d",
       },
-      fontFamily: {
-        nunito: ["Nunito Variable", "sans-serif"],
-        bangers: ["Bangers", "Adjusted Impact Fallback", "sans-serif"],
-      },
       backgroundImage: {
         "vertical-split":
           "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==')",

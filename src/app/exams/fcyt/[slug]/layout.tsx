@@ -25,9 +25,9 @@ export default async function FcytExamsLayout({
   const [year, semester, idResource] = slug.split("-");
 
   return (
-    <div>
-      <h1 className="sr-only">{`${semester}-${year} | Examen de Ingreso-inador #${idResource}`}</h1>
+    <>
+      <h1 className="sr-only">{`Examen de ingreso de la gestión ${semester}-${year} | #${idResource} Examen de Ingreso-inador`}</h1>
       {children}
-    </div>
+    </>
   );
 }
