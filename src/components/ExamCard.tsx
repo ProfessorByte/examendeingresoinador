@@ -3,7 +3,6 @@ import Link from "next/link";
 
 interface ExamCardProps extends Exam {
   index: number;
-  slug: string;
 }
 
 export const ExamCard = ({
@@ -18,7 +17,7 @@ export const ExamCard = ({
     <Link
       className="block relative p-6 bg-brand-gray rounded-lg border border-solid border-brand-darkwhite shadow-lg shadow-black z-0 overflow-hidden before:absolute before:-z-10 before:-bottom-4 before:-right-4 before:bg-brand-darkgreen before:size-8 before:rounded-full before:transition-transform before:duration-[600ms] before:ease-out hover:before:scale-[30] opacity-0 animate-fadeRight"
       style={{ animationDelay: `${index * 36}ms` }}
-      href={`/exams/${slug}`}
+      href={`/exams/fcyt/${slug}`}
     >
       <h2 className="text-2xl font-semibold">
         {`Examen de Ingreso #${idResource}`}
