@@ -1,9 +1,17 @@
+import { OptionType } from "@/utils/interfaces";
 import { useParams, usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export const useYear = () => {
+export const useYear = (yearsOptions: OptionType[]) => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams<{ year: string }>();
+
+  useEffect(() => {
+    yearsOptions.forEach((yearOption) => {
+      router.prefetch(`/fcyt/${yearOption.value}`);
+    });
+  }, [yearsOptions, router]);
 
   const updateYearInURL = (year: number) => {
     const newPath = pathname.replace(`/${params.year}`, `/${year}`);
