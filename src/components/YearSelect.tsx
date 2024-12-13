@@ -1,56 +1,10 @@
 "use client";
 
-import Select, { GroupBase, SingleValue, StylesConfig } from "react-select";
+import Select, { SingleValue } from "react-select";
 import { useEffect, useRef, useState } from "react";
 import { OptionType } from "@/utils/interfaces";
 import { useYear } from "@/hooks/useYear";
-
-const darkStyles: StylesConfig<
-  {
-    value: number;
-    label: number;
-  },
-  false,
-  GroupBase<{
-    value: number;
-    label: number;
-  }>
-> = {
-  control: (styles) => ({
-    ...styles,
-    backgroundColor: "#0f172a",
-    color: "#f3f4f6",
-  }),
-  menu: (styles) => ({
-    ...styles,
-    backgroundColor: "#343541",
-  }),
-  option: (styles, { isFocused, isSelected }) => ({
-    ...styles,
-    backgroundColor: isSelected ? "#111111" : isFocused ? "#202123" : "#343541",
-    color: "#f3f4f6",
-  }),
-  singleValue: (styles) => ({
-    ...styles,
-    color: "#f3f4f6",
-  }),
-  // multiValue: (styles) => ({
-  //   ...styles,
-  //   backgroundColor: "#202123",
-  // }),
-  // multiValueLabel: (styles) => ({
-  //   ...styles,
-  //   color: "#f3f4f6",
-  // }),
-  // multiValueRemove: (styles) => ({
-  //   ...styles,
-  //   color: "#f3f4f6",
-  //   ":hover": {
-  //     backgroundColor: "#343541",
-  //     color: "#f3f4f6",
-  //   },
-  // }),
-};
+import { darkStyles } from "@/utils/yearSelectStyles";
 
 interface YearSelectProps {
   yearsOptions: OptionType[];
@@ -61,7 +15,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
   const selectSectionRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
 
-  const { updateYearInURL } = useYear();
+  const { updateYearInURL } = useYear(yearsOptions);
 
   useEffect(() => {
     const handleScroll = () => {
