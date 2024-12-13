@@ -1,7 +1,16 @@
+import { getExamsData } from "@/utils/services";
+
 interface FcytExamsLayoutProps {
   children: React.ReactNode;
   params: Promise<{ slug: string }>;
 }
+
+export async function generateStaticParams() {
+  const examsData = await getExamsData();
+  return examsData.map((exam) => ({ slug: exam.slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
