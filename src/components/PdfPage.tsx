@@ -7,13 +7,26 @@ import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
+const examsUrlTemplate = `/exams/fcyt/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
+
 interface PdfPageProps {
   pdfContentLabel: "exam" | "solution";
-  pdfContentBlob: Blob;
+  slug: string;
 }
 
-export const PdfPage = ({ pdfContentLabel, pdfContentBlob }: PdfPageProps) => {
+export const PdfPage = ({ pdfContentLabel, slug }: PdfPageProps) => {
   const [showCover, setShowCover] = useState(false);
+
+  const pdfUrl = useMemo(
+    () =>
+      examsUrlTemplate
+        .replace(/{SLUG}/g, slug)
+        .replace(
+          "{CONTENT_LABEL}",
+          pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"
+        ),
+    [slug, pdfContentLabel]
+  );
 
   const handleDocumentLoad = useCallback(() => {
     setShowCover(true);
@@ -22,15 +35,13 @@ export const PdfPage = ({ pdfContentLabel, pdfContentBlob }: PdfPageProps) => {
     }, 3000);
   }, []);
 
-  const pdfUrl = useMemo(
-    () => URL.createObjectURL(pdfContentBlob),
-    [pdfContentBlob]
-  );
+  const fileNameGenerator = () =>
+    pdfContentLabel === "exam" ? `Preguntas_${slug}` : `Respuestas_${slug}`;
 
   const zoomPluginInstance = zoomPlugin();
   const { ZoomInButton, ZoomOutButton, ZoomPopover } = zoomPluginInstance;
 
-  const getFilePluginInstance = getFilePlugin();
+  const getFilePluginInstance = getFilePlugin({ fileNameGenerator });
   const { DownloadButton } = getFilePluginInstance;
 
   return (
