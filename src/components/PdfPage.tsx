@@ -7,7 +7,7 @@ import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
-const examsUrlTemplate = `/exams/fcyt/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
+const examsUrlTemplate = `https://raw.githubusercontent.com/ProfessorByte/science-exams-crawler/refs/heads/main/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
 
 interface PdfPageProps {
   pdfContentLabel: "exam" | "solution";
