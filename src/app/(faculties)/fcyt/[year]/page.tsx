@@ -2,10 +2,10 @@ import { CardsContainer } from "@/components/CardsContainer";
 import { YearSelect } from "@/components/YearSelect";
 import { isValidYear } from "@/utils/functions";
 import { Exam, OptionType } from "@/utils/interfaces";
-import { getExamsData } from "@/utils/services";
+import { getFcytExamsData } from "@/utils/services";
 import { redirect } from "next/navigation";
 
-const examsData: Exam[] = await getExamsData();
+const examsData: Exam[] = await getFcytExamsData();
 
 const yearsOptions: OptionType[] = [
   ...new Set(examsData.map((exam) => exam.year)),
