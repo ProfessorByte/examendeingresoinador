@@ -5,8 +5,23 @@ const nextConfig: NextConfig = {
   redirects: async () => {
     return [
       {
+        source: "/",
+        destination: "/fcyt/darkmind",
+        permanent: false,
+      },
+      {
+        source: "/fcyt",
+        destination: "/fcyt/darkmind",
+        permanent: false,
+      },
+      {
+        source: "/fcyt/exams",
+        destination: "/fcyt/darkmind",
+        permanent: false,
+      },
+      {
         source: "/exams/:slug",
-        destination: "/exams/fcyt/:slug",
+        destination: "/fcyt/exams/:slug",
         permanent: true,
       },
     ];
