@@ -1,7 +1,7 @@
-import { getExamsData } from "@/utils/services";
+import { getFcytExamsData } from "@/utils/services";
 import type { MetadataRoute } from "next";
 
-const slugs = (await getExamsData()).map((exam) => exam.slug);
+const slugs = (await getFcytExamsData()).map((exam) => exam.slug);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...slugs.map((slug) => ({
       url: `https://examendeingresoinador.pages.dev/exams/fcyt/${slug}`,
-      priority: 0.8,
+      priority: 0.7,
     })),
   ];
 }

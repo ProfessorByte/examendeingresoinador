@@ -1,4 +1,4 @@
-import { getExamsData } from "@/utils/services";
+import { getFcytExamsData } from "@/utils/services";
 
 interface FcytExamsLayoutProps {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ interface FcytExamsLayoutProps {
 }
 
 export async function generateStaticParams() {
-  const examsData = await getExamsData();
+  const examsData = await getFcytExamsData();
   return examsData.map((exam) => ({ slug: exam.slug }));
 }
 
