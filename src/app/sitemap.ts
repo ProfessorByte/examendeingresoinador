@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...slugs.map((slug) => ({
-      url: `https://examendeingresoinador.pages.dev/exams/fcyt/${slug}`,
+      url: `https://examendeingresoinador.pages.dev/fcyt/exams/${slug}`,
       priority: 0.7,
     })),
   ];
