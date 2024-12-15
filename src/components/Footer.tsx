@@ -14,7 +14,7 @@ export const Footer = () => {
       <article className="flex flex-col gap-6 justify-center items-center md:flex-row">
         <Image
           src="/pabloux.jpg"
-          alt="Logo de Pabloux Darkmind"
+          alt="Pabloux Darkmind"
           className="rounded-full border-4 border-solid border-brand-white shadow-lg shadow-black"
           width={144}
           height={144}
