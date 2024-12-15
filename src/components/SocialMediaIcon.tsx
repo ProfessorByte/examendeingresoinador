@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface SocialMediaIconProps {
   MediaIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   href: string;
@@ -12,13 +14,13 @@ export const SocialMediaIcon = ({
   fill = "#f3f4f6",
 }: SocialMediaIconProps) => {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={href} target="_blank" rel="noopener noreferrer">
       <MediaIcon
         width={size}
         height={size}
         fill={fill}
         className="hover:scale-110 transition-all duration-300"
       />
-    </a>
+    </Link>
   );
 };
