@@ -1,10 +1,11 @@
 import { Gutter } from "@/components/Gutter";
-import { PdfPage } from "@/components/PdfPage";
-import { Direction } from "@/utils/interfaces";
+import { PdfDocument } from "@/components/PdfDocument";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
 import { SetStateAction, useCallback, useEffect, useState } from "react";
 import Split from "react-split-grid";
+
+import type { Direction } from "@/utils/interfaces";
 
 export default function ExamSolutionSplit() {
   const [gridTemplate, setGridTemplate] = useState<string>("1fr 18px 1fr");
@@ -63,13 +64,13 @@ export default function ExamSolutionSplit() {
         // @ts-expect-error: Split component does not have TypeScript definitions for render prop
         render={({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()}>
-            <PdfPage pdfContentLabel="exam" slug={slug} />
+            <PdfDocument pdfContentLabel="exam" slug={slug} />
             <Gutter
               direction={directionSplit}
               getGutterProps={getGutterProps}
               track={1}
             />
-            <PdfPage pdfContentLabel="solution" slug={slug} />
+            <PdfDocument pdfContentLabel="solution" slug={slug} />
           </div>
         )}
       />

@@ -1,10 +1,13 @@
 "use client";
 
-import Select, { SingleValue } from "react-select";
 import { useEffect, useRef, useState } from "react";
-import { OptionType } from "@/utils/interfaces";
 import { useYear } from "@/hooks/useYear";
 import { darkStyles } from "@/utils/yearSelectStyles";
+
+import Select from "react-select";
+
+import type { SingleValue } from "react-select";
+import type { OptionType } from "@/utils/interfaces";
 
 interface YearSelectProps {
   yearsOptions: OptionType[];

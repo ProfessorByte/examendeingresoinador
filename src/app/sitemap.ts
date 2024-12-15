@@ -1,4 +1,5 @@
 import { getFcytExamsData } from "@/utils/services";
+
 import type { MetadataRoute } from "next";
 
 const slugs = (await getFcytExamsData()).map((exam) => exam.slug);

@@ -1,9 +1,10 @@
 import { CardsContainer } from "@/components/CardsContainer";
 import { YearSelect } from "@/components/YearSelect";
-import { isValidYear } from "@/utils/functions";
-import { Exam, OptionType } from "@/utils/interfaces";
+import { isValidYear } from "@/utils/validation";
 import { getFcytExamsData } from "@/utils/services";
 import { redirect } from "next/navigation";
+
+import type { Exam, OptionType } from "@/utils/interfaces";
 
 const examsData: Exam[] = await getFcytExamsData();
 
