@@ -17,12 +17,12 @@ export const ErrorCountdown = ({ seconds }: ErrorCountdownProps) => {
       }, 1000);
       return () => clearTimeout(timerId);
     } else {
-      router.replace("/");
+      router.push("/");
     }
   }, [count, router]);
 
   return (
-    <article className="m-6 max-w-96 flex flex-col">
+    <article className="p-6 max-w-96 flex flex-col">
       <h3 className="text-3xl font-bold">Oops!</h3>
       <span className="text-2xl font-semibold">Hubo un error :(</span>
       <span className="text-xl">
