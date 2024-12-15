@@ -4,17 +4,18 @@ import { ErrorCountdown } from "@/assets/ErrorCountdown";
 import { Viewer } from "@react-pdf-viewer/core";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
+
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
 const examsUrlTemplate = `https://raw.githubusercontent.com/ProfessorByte/science-exams-crawler/refs/heads/main/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
 
-interface PdfPageProps {
+interface PdfDocumentProps {
   pdfContentLabel: "exam" | "solution";
   slug: string;
 }
 
-export const PdfPage = ({ pdfContentLabel, slug }: PdfPageProps) => {
+export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
   const [showCover, setShowCover] = useState(false);
 
   const pdfUrl = useMemo(

@@ -1,5 +1,6 @@
-import { Exam, OptionType } from "@/utils/interfaces";
 import { ExamCard } from "./ExamCard";
+
+import type { Exam, OptionType } from "@/utils/interfaces";
 
 interface CardsContainerProps {
   examsData: Exam[];

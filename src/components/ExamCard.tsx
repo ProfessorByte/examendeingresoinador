@@ -1,5 +1,6 @@
-import { Exam } from "@/utils/interfaces";
 import Link from "next/link";
+
+import type { Exam } from "@/utils/interfaces";
 
 interface ExamCardProps extends Exam {
   index: number;

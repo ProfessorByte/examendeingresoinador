@@ -1,6 +1,7 @@
-import { OptionType } from "@/utils/interfaces";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+
+import type { OptionType } from "@/utils/interfaces";
 
 export const useYear = (yearsOptions: OptionType[]) => {
   const router = useRouter();

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SocialMediaIcon } from "@/components/SocialMediaIcon";
 import {
   FacebookIcon,
@@ -7,6 +6,8 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/assets/Icons";
+
+import Image from "next/image";
 
 export const Footer = () => {
   return (
