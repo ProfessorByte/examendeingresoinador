@@ -15,6 +15,9 @@ const pageData = {
 export const metadata: Metadata = {
   title: pageData.title,
   description: pageData.description,
+  verification: {
+    google: "ZE7wOzJUJXqowqy_3ufsabYa5hFEpWedyNTbD7rtnTU",
+  },
   icons: "/favicon.ico",
   creator: "Pablo Pardo Alcocer (Pabloux Darkmind)",
   applicationName: "Examen de Ingreso-inador",
@@ -62,12 +65,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <meta
-          name="google-site-verification"
-          content="ZE7wOzJUJXqowqy_3ufsabYa5hFEpWedyNTbD7rtnTU"
-        />
-      </head>
       <body className={`${nunito.className} antialiased`}>{children}</body>
     </html>
   );
