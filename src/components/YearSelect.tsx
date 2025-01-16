@@ -53,7 +53,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
       ref={selectSectionRef}
     >
       <label htmlFor="yearSelect" className="sr-only">
-        Filtrar por año:
+        Selecciona un año para ver los exámenes
       </label>
       <Select
         instanceId="yearSelectInstanceId"
