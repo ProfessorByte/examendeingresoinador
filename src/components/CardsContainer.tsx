@@ -16,7 +16,11 @@ export const CardsContainer = ({
   );
 
   return (
-    <section className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-4 mx-auto md:max-w-[84%] mt-6 mb-9 p-6">
+    <section
+      className={`grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-4 mx-auto max-w-[420px] ${
+        filteredExams.length > 3 && "md:max-w-[min(84%,1260px)]"
+      } mt-6 mb-9 p-6`}
+    >
       {filteredExams.map((exam, index) => {
         const { slug } = exam;
         return <ExamCard key={slug} index={index} {...exam} />;
