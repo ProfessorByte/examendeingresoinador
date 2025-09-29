@@ -52,7 +52,7 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
       <div className="sticky z-10 bg-brand-white flex justify-center items-center h-9">
         <div className="flex-1" />
         <div
-          className={`flex flex-grow-0 justify-center items-center ${styles.btnToolbarContainer}`}
+          className={`flex grow-0 justify-center items-center ${styles.btnToolbarContainer}`}
         >
           <ZoomOutButton />
           <ZoomPopover />
@@ -66,7 +66,7 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
       </div>
       <div className="h-[calc(100%-2.25rem)] relative">
         {showCover && (
-          <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray bg-opacity-75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slideFromRight">
+          <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray bg-opacity-75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slide-from-right">
             {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
           </div>
         )}

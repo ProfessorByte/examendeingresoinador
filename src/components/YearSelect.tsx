@@ -48,7 +48,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
   return (
     <section
       className={`sticky top-0 flex justify-center items-center mx-auto z-10 py-3 transition-colors duration-300 ease-in-out ${
-        isSticky ? "backdrop-blur-sm bg-brand-black/75" : "bg-transparent"
+        isSticky ? "backdrop-blur-xs bg-brand-black/75" : "bg-transparent"
       }`}
       ref={selectSectionRef}
     >

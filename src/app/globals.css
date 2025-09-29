@@ -1,22 +1,82 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@theme {
+  --color-brand-black: #111111;
+  --color-brand-darkgray: #202123;
+  --color-brand-gray: #343541;
+  --color-brand-darkblue: #0f172a;
+  --color-brand-white: #f3f4f6;
+  --color-brand-darkwhite: #c9c9c9;
+  --color-brand-darkgreen: #00838d;
+
+  --background-image-vertical-split: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
+  --background-image-horizontal-split: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
+
+  --animate-slide-from-right: slideFromRight 3s cubic-bezier(0.5, 1.6, 0.4, 0.7)
+    forwards;
+  --animate-fade-down: fadeDown 1.2s ease-in-out forwards;
+  --animate-fade-right: fadeRight 300ms ease-in forwards;
+
+  @keyframes slideFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    9% {
+      transform: translateX(0);
+    }
+    90% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes fadeDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-18%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
-a {
-  font-weight: 500;
-  text-decoration: none;
-}
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 
-html,
-body {
-  min-width: 240px;
-  min-height: 100vh;
-  color: #f3f4f6;
-  @apply bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#111111] via-zinc-800 to-[#111111];
+  a {
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  html,
+  body {
+    min-width: 240px;
+    min-height: 100vh;
+    color: #f3f4f6;
+    @apply bg-radial from-brand-black via-zinc-800 to-brand-black;
+  }
 }
