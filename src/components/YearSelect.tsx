@@ -7,11 +7,11 @@ import { darkStyles } from "@/utils/yearSelectStyles";
 import Select from "react-select";
 
 import type { SingleValue } from "react-select";
-import type { OptionType } from "@/utils/interfaces";
+import type { OptionSelect } from "@/types/select.types";
 
 interface YearSelectProps {
-  yearsOptions: OptionType[];
-  selectedYear: OptionType;
+  yearsOptions: OptionSelect[];
+  selectedYear: OptionSelect;
 }
 
 export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
@@ -38,7 +38,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
     };
   }, []);
 
-  const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
+  const handleYearChange = (selectedOption: SingleValue<OptionSelect>) => {
     if (selectedOption) {
       updateYearInURL(selectedOption.value);
       // selectSectionRef.current.scrollIntoView({ behavior: "smooth" });
@@ -48,7 +48,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
   return (
     <section
       className={`sticky top-0 flex justify-center items-center mx-auto z-10 py-3 transition-colors duration-300 ease-in-out ${
-        isSticky ? "backdrop-blur-sm bg-brand-black/75" : "bg-transparent"
+        isSticky ? "backdrop-blur-xs bg-brand-black/75" : "bg-transparent"
       }`}
       ref={selectSectionRef}
     >

@@ -6,7 +6,7 @@ export const Hero = () => {
       <Image
         src="/logo.webp"
         alt="Examen de Ingreso-inador: Encuentra exámenes pasados para ingresar a la Facultad de Tecnología de la UMSS"
-        className="animate-fadeDown drop-shadow-[0_0_15px_black] ml-6"
+        className="animate-fade-down drop-shadow-[0_0_15px_black] ml-6"
         width={300}
         height={269}
         priority

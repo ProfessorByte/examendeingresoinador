@@ -13,6 +13,7 @@ export const Loader = ({ percentages, size, fill }: LoaderProps) => (
       width={size}
       height={size}
     >
+      <title>Cargando... {Math.round(percentages)}%</title>
       <path
         fill={fill}
         d="M31.6 3.5C5.9 13.6-6.6 42.7 3.5 68.4c10.1 25.7 39.2 38.3 64.9 28.1l-3.1-7.9C44 97 19.9 86.6 11.5 65.3c-8.4-21.3 2-45.4 23.3-53.8l-3.2-8z"

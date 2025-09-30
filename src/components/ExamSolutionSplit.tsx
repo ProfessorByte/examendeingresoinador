@@ -2,15 +2,15 @@ import { Gutter } from "@/components/Gutter";
 import { PdfDocument } from "@/components/PdfDocument";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Split from "react-split-grid";
 
-import type { Direction } from "@/utils/interfaces";
+import type { Direction } from "@/types/split.types";
 
 export default function ExamSolutionSplit() {
   const [gridTemplate, setGridTemplate] = useState<string>("1fr 18px 1fr");
   const [directionSplit, setDirectionSplit] = useState<Direction>(
-    window.innerWidth < 768 ? "row" : "column"
+    window.innerWidth < 768 ? "row" : "column",
   );
 
   const { slug } = useParams<{ slug: string }>();
@@ -46,23 +46,20 @@ export default function ExamSolutionSplit() {
         columnMinSize: 36,
       };
     },
-    [gridTemplate]
+    [gridTemplate],
   );
 
   const handleDrag = useCallback(
-    (direction: Direction, track: number, style: SetStateAction<string>) => {
-      setGridTemplate(style);
+    (_direction: Direction, _track: number, gridTemplateStyle: string) => {
+      setGridTemplate(gridTemplateStyle);
     },
-    []
+    [],
   );
 
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-      <Split
-        {...setSplitProps(directionSplit)}
-        onDrag={handleDrag}
-        // @ts-expect-error: Split component does not have TypeScript definitions for render prop
-        render={({ getGridProps, getGutterProps }) => (
+      <Split {...setSplitProps(directionSplit)} onDrag={handleDrag}>
+        {({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()}>
             <PdfDocument pdfContentLabel="exam" slug={slug} />
             <Gutter
@@ -73,7 +70,7 @@ export default function ExamSolutionSplit() {
             <PdfDocument pdfContentLabel="solution" slug={slug} />
           </div>
         )}
-      />
+      </Split>
     </Worker>
   );
 }

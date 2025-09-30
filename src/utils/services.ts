@@ -1,4 +1,4 @@
-import type { Exam } from "./interfaces";
+import type { Exam } from "../types/exam.types";
 
 export const getFcytExamsData = async (): Promise<Exam[]> => {
   const response = await fetch(

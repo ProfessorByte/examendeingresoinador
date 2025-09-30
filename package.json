@@ -4,35 +4,29 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "start": "next start",
-    "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
+    "lint": "biome check",
+    "format": "biome format --write"
   },
   "dependencies": {
     "@react-pdf-viewer/core": "3.12.0",
-    "@react-pdf-viewer/get-file": "3.12.0",
-    "@react-pdf-viewer/zoom": "3.12.0",
-    "next": "15.1.0",
+    "@react-pdf-viewer/get-file": "^3.12.0",
+    "@react-pdf-viewer/zoom": "^3.12.0",
+    "next": "15.5.4",
     "pdfjs-dist": "3.4.120",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-select": "^5.8.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-select": "^5.10.2",
     "react-split-grid": "^1.0.4"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.7",
-    "@eslint/eslintrc": "^3",
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.0",
-    "postcss": "^8",
-    "raw-loader": "^4.0.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
