@@ -2,7 +2,7 @@ import { Gutter } from "@/components/Gutter";
 import { PdfDocument } from "@/components/PdfDocument";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
-import { type SetStateAction, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Split from "react-split-grid";
 
 import type { Direction } from "@/utils/interfaces";
@@ -50,19 +50,16 @@ export default function ExamSolutionSplit() {
   );
 
   const handleDrag = useCallback(
-    (_direction: Direction, _track: number, style: SetStateAction<string>) => {
-      setGridTemplate(style);
+    (_direction: Direction, _track: number, gridTemplateStyle: string) => {
+      setGridTemplate(gridTemplateStyle);
     },
     [],
   );
 
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-      <Split
-        {...setSplitProps(directionSplit)}
-        onDrag={handleDrag}
-        // @ts-expect-error: Split component does not have TypeScript definitions for render prop
-        render={({ getGridProps, getGutterProps }) => (
+      <Split {...setSplitProps(directionSplit)} onDrag={handleDrag}>
+        {({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()}>
             <PdfDocument pdfContentLabel="exam" slug={slug} />
             <Gutter
@@ -73,7 +70,7 @@ export default function ExamSolutionSplit() {
             <PdfDocument pdfContentLabel="solution" slug={slug} />
           </div>
         )}
-      />
+      </Split>
     </Worker>
   );
 }
