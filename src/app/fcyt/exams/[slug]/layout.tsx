@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const [year, semester, idResource, formVersion] = (await params).slug.split(
-    "-"
+    "-",
   );
   return {
     title: `Examen FCyT | Gestión ${semester}-${year} | Fila ${formVersion} | #${idResource}`,

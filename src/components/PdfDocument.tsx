@@ -26,9 +26,9 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
         .replace(/{SLUG}/g, slug)
         .replace(
           "{CONTENT_LABEL}",
-          pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"
+          pdfContentLabel === "exam" ? "Preguntas" : "Respuestas",
         ),
-    [slug, pdfContentLabel]
+    [slug, pdfContentLabel],
   );
 
   const handleDocumentLoad = useCallback(() => {
