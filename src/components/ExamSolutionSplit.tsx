@@ -2,7 +2,7 @@ import { Gutter } from "@/components/Gutter";
 import { PdfDocument } from "@/components/PdfDocument";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import { type SetStateAction, useCallback, useEffect, useState } from "react";
 import Split from "react-split-grid";
 
 import type { Direction } from "@/utils/interfaces";
@@ -10,7 +10,7 @@ import type { Direction } from "@/utils/interfaces";
 export default function ExamSolutionSplit() {
   const [gridTemplate, setGridTemplate] = useState<string>("1fr 18px 1fr");
   const [directionSplit, setDirectionSplit] = useState<Direction>(
-    window.innerWidth < 768 ? "row" : "column"
+    window.innerWidth < 768 ? "row" : "column",
   );
 
   const { slug } = useParams<{ slug: string }>();
@@ -46,14 +46,14 @@ export default function ExamSolutionSplit() {
         columnMinSize: 36,
       };
     },
-    [gridTemplate]
+    [gridTemplate],
   );
 
   const handleDrag = useCallback(
-    (direction: Direction, track: number, style: SetStateAction<string>) => {
+    (_direction: Direction, _track: number, style: SetStateAction<string>) => {
       setGridTemplate(style);
     },
-    []
+    [],
   );
 
   return (

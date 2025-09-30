@@ -6,7 +6,7 @@ interface GutterProps {
   direction: Direction;
   getGutterProps: (
     direction: Direction,
-    track: number
+    track: number,
   ) => React.HTMLAttributes<HTMLDivElement>;
   track: number;
 }
@@ -28,7 +28,7 @@ export const Gutter = ({ direction, getGutterProps, track }: GutterProps) => {
         passive: false,
       } as EventListenerOptions);
     };
-  }, [gutterRef]);
+  }, []);
 
   return (
     <div
