@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import Split from "react-split-grid";
 
-import type { Direction } from "@/types/interfaces";
+import type { Direction } from "@/types/types";
 
 export default function ExamSolutionSplit() {
   const [gridTemplate, setGridTemplate] = useState<string>("1fr 18px 1fr");

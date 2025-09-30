@@ -12,5 +12,3 @@ export interface OptionType {
   readonly value: number;
   readonly label: number;
 }
-
-export type Direction = "row" | "column";

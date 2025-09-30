@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-import type { Direction } from "@/types/interfaces";
+import type { Direction } from "@/types/types";
 
 interface GutterProps {
   direction: Direction;
