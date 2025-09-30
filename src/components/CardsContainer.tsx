@@ -1,6 +1,6 @@
 import { ExamCard } from "./ExamCard";
 
-import type { Exam, OptionType } from "@/utils/interfaces";
+import type { Exam, OptionType } from "@/types/interfaces";
 
 interface CardsContainerProps {
   examsData: Exam[];

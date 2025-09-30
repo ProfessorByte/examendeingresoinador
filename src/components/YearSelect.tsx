@@ -7,7 +7,7 @@ import { darkStyles } from "@/utils/yearSelectStyles";
 import Select from "react-select";
 
 import type { SingleValue } from "react-select";
-import type { OptionType } from "@/utils/interfaces";
+import type { OptionType } from "@/types/interfaces";
 
 interface YearSelectProps {
   yearsOptions: OptionType[];
