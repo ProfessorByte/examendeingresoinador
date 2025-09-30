@@ -8,7 +8,7 @@ export interface Exam {
   readonly idResource: number;
 }
 
-export interface OptionType {
+export interface OptionSelect {
   readonly value: number;
   readonly label: number;
 }

@@ -7,11 +7,11 @@ import { darkStyles } from "@/utils/yearSelectStyles";
 import Select from "react-select";
 
 import type { SingleValue } from "react-select";
-import type { OptionType } from "@/types/interfaces";
+import type { OptionSelect } from "@/types/interfaces";
 
 interface YearSelectProps {
-  yearsOptions: OptionType[];
-  selectedYear: OptionType;
+  yearsOptions: OptionSelect[];
+  selectedYear: OptionSelect;
 }
 
 export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
@@ -38,7 +38,7 @@ export const YearSelect = ({ yearsOptions, selectedYear }: YearSelectProps) => {
     };
   }, []);
 
-  const handleYearChange = (selectedOption: SingleValue<OptionType>) => {
+  const handleYearChange = (selectedOption: SingleValue<OptionSelect>) => {
     if (selectedOption) {
       updateYearInURL(selectedOption.value);
       // selectSectionRef.current.scrollIntoView({ behavior: "smooth" });

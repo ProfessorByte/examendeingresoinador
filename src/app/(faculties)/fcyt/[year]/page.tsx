@@ -4,11 +4,11 @@ import { isValidYear } from "@/utils/validation";
 import { getFcytExamsData } from "@/utils/services";
 import { redirect } from "next/navigation";
 
-import type { Exam, OptionType } from "@/types/interfaces";
+import type { Exam, OptionSelect } from "@/types/interfaces";
 
 const examsData: Exam[] = await getFcytExamsData();
 
-const yearsOptions: OptionType[] = [
+const yearsOptions: OptionSelect[] = [
   ...new Set(examsData.map((exam) => exam.year)),
 ]
   .sort((a, b) => b - a)
@@ -38,7 +38,7 @@ export default async function FcytPage({ params }: FcytPageProps) {
   if (!isValidYear(selectedYear, yearsOptions))
     redirect(`/fcyt/${yearsOptions[0].value}`);
 
-  const selectedYearOption: OptionType = {
+  const selectedYearOption: OptionSelect = {
     value: selectedYear,
     label: selectedYear,
   };

@@ -1,4 +1,4 @@
-import type { OptionType } from "../types/interfaces";
+import type { OptionSelect } from "../types/interfaces";
 
-export const isValidYear = (year: number, yearsOptions: OptionType[]) =>
+export const isValidYear = (year: number, yearsOptions: OptionSelect[]) =>
   yearsOptions.some((option) => option.value === year);

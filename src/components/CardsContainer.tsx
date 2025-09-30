@@ -1,10 +1,10 @@
 import { ExamCard } from "./ExamCard";
 
-import type { Exam, OptionType } from "@/types/interfaces";
+import type { Exam, OptionSelect } from "@/types/interfaces";
 
 interface CardsContainerProps {
   examsData: Exam[];
-  selectedYear: OptionType;
+  selectedYear: OptionSelect;
 }
 
 export const CardsContainer = ({
