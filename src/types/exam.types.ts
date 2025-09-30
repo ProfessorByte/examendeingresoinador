@@ -7,8 +7,3 @@ export interface Exam {
   readonly formVersion: 1 | 2;
   readonly idResource: number;
 }
-
-export interface OptionSelect {
-  readonly value: number;
-  readonly label: number;
-}

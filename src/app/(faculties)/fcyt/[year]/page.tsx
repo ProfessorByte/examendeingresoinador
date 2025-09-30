@@ -4,7 +4,8 @@ import { isValidYear } from "@/utils/validation";
 import { getFcytExamsData } from "@/utils/services";
 import { redirect } from "next/navigation";
 
-import type { Exam, OptionSelect } from "@/types/interfaces";
+import type { Exam } from "@/types/exam.types";
+import type { OptionSelect } from "@/types/select.types";
 
 const examsData: Exam[] = await getFcytExamsData();
 
