@@ -12,21 +12,31 @@ interface GutterProps {
 }
 
 export const Gutter = ({ direction, getGutterProps, track }: GutterProps) => {
-  const gutterRef = useRef(null);
+  const gutterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleTouchMove = (event: TouchEvent) => {
-      if (event.target === gutterRef.current) {
-        event.preventDefault();
-      }
+    const gutterElement = gutterRef.current;
+    if (!gutterElement) return;
+
+    const handleTouchMove = (event: Event) => {
+      event.preventDefault();
     };
 
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    const handleTouchStart = (event: Event) => {
+      event.preventDefault();
+    };
+
+    const options: AddEventListenerOptions = { passive: false };
+    gutterElement.addEventListener("touchmove", handleTouchMove, options);
+    gutterElement.addEventListener("touchstart", handleTouchStart, options);
 
     return () => {
-      window.removeEventListener("touchmove", handleTouchMove, {
-        passive: false,
-      } as EventListenerOptions);
+      gutterElement.removeEventListener("touchmove", handleTouchMove, options);
+      gutterElement.removeEventListener(
+        "touchstart",
+        handleTouchStart,
+        options,
+      );
     };
   }, []);
 
