@@ -38,6 +38,11 @@ export const PdfDocument = ({
         )}
         renderError={() => <ErrorCountdown seconds={3} />}
         onDocumentLoad={handleDocumentLoad}
+        pageLayout={{
+          buildPageStyles: () => ({
+            backgroundColor: "transparent",
+          }),
+        }}
       />
     </div>
   );
