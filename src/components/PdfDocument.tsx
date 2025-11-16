@@ -1,7 +1,9 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { Loader } from "@/assets/Loader";
 import { ErrorCountdown } from "@/assets/ErrorCountdown";
 import { Viewer } from "@react-pdf-viewer/core";
+import { InitTitleCover } from "./InitTitleCover";
+import { useShowCover } from "@/hooks/useShowCover";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 
@@ -20,7 +22,7 @@ interface PdfDocumentProps {
 export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
   "use no memo";
 
-  const [showCover, setShowCover] = useState(false);
+  const { showCover, handleDocumentLoad } = useShowCover();
 
   const pdfUrl = useMemo(
     () =>
@@ -32,13 +34,6 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
         ),
     [slug, pdfContentLabel],
   );
-
-  const handleDocumentLoad = useCallback(() => {
-    setShowCover(true);
-    setTimeout(() => {
-      setShowCover(false);
-    }, 3000);
-  }, []);
 
   const fileNameGenerator = useCallback(
     () =>
@@ -70,11 +65,10 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
         </div>
       </div>
       <div className="h-[calc(100%-2.25rem)] relative">
-        {showCover && (
-          <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray bg-opacity-75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slide-from-right">
-            {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
-          </div>
-        )}
+        <InitTitleCover
+          pdfContentLabel={pdfContentLabel}
+          showCover={showCover}
+        />
         <Viewer
           fileUrl={pdfUrl}
           theme="dark"
