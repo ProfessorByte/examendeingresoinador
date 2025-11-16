@@ -7,19 +7,19 @@ import { useShowCover } from "@/hooks/useShowCover";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 
-import styles from "@/components/PdfDocument.module.css";
+import styles from "@/components/PdfView.module.css";
 
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
 const examsUrlTemplate = `https://raw.githubusercontent.com/ProfessorByte/science-exams-crawler/refs/heads/main/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
 
-interface PdfDocumentProps {
+interface PdfViewProps {
   pdfContentLabel: "exam" | "solution";
   slug: string;
 }
 
-export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
+export const PdfView = ({ pdfContentLabel, slug }: PdfViewProps) => {
   "use no memo";
 
   const { showCover, handleDocumentLoad } = useShowCover();

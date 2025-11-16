@@ -1,5 +1,5 @@
 import { Gutter } from "@/components/Gutter";
-import { PdfDocument } from "@/components/PdfDocument";
+import { PdfView } from "@/components/PdfView";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -59,13 +59,13 @@ export default function ExamSolutionSplit() {
       <Split {...setSplitProps(directionSplit)} onDrag={handleDrag}>
         {({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()}>
-            <PdfDocument pdfContentLabel="exam" slug={slug} />
+            <PdfView pdfContentLabel="exam" slug={slug} />
             <Gutter
               direction={directionSplit}
               getGutterProps={getGutterProps}
               track={1}
             />
-            <PdfDocument pdfContentLabel="solution" slug={slug} />
+            <PdfView pdfContentLabel="solution" slug={slug} />
           </div>
         )}
       </Split>
