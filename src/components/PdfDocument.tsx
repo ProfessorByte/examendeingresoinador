@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { type Plugin, Viewer } from "@react-pdf-viewer/core";
 import { Loader } from "@/assets/Loader";
 import { ErrorCountdown } from "@/assets/ErrorCountdown";
@@ -19,12 +19,12 @@ export const PdfDocument = ({
 }: PdfDocumentProps) => {
   const [showCover, setShowCover] = useState(false);
 
-  const handleDocumentLoad = useCallback(() => {
+  const handleDocumentLoad = () => {
     setShowCover(true);
     setTimeout(() => {
       setShowCover(false);
     }, 3000);
-  }, []);
+  };
 
   return (
     <div className="h-[calc(100%-2.25rem)] relative">

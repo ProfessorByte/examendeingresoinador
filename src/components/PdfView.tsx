@@ -1,4 +1,3 @@
-import { useCallback, useMemo } from "react";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { PdfDocument } from "./PdfDocument";
@@ -16,22 +15,15 @@ interface PdfViewProps {
 }
 
 export const PdfView = ({ pdfContentLabel, slug }: PdfViewProps) => {
-  const pdfUrl = useMemo(
-    () =>
-      examsUrlTemplate
-        .replace(/{SLUG}/g, slug)
-        .replace(
-          "{CONTENT_LABEL}",
-          pdfContentLabel === "exam" ? "Preguntas" : "Respuestas",
-        ),
-    [slug, pdfContentLabel],
-  );
+  const pdfUrl = examsUrlTemplate
+    .replace(/{SLUG}/g, slug)
+    .replace(
+      "{CONTENT_LABEL}",
+      pdfContentLabel === "exam" ? "Preguntas" : "Respuestas",
+    );
 
-  const fileNameGenerator = useCallback(
-    () =>
-      pdfContentLabel === "exam" ? `Preguntas_${slug}` : `Respuestas_${slug}`,
-    [pdfContentLabel, slug],
-  );
+  const fileNameGenerator = () =>
+    pdfContentLabel === "exam" ? `Preguntas_${slug}` : `Respuestas_${slug}`;
 
   const zoomPluginInstance = zoomPlugin();
   const { ZoomInButton, ZoomOutButton, ZoomPopover } = zoomPluginInstance;
