@@ -12,7 +12,7 @@ export const InitTitleCover = ({
   }
 
   return (
-    <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray bg-opacity-75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slide-from-right">
+    <div className="absolute inset-0 my-auto h-9 bg-brand-darkgray/75 flex items-center justify-center text-brand-white text-3xl font-bold z-20 animate-slide-from-right">
       {pdfContentLabel === "exam" ? "Preguntas" : "Respuestas"}
     </div>
   );
