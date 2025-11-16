@@ -20,11 +20,6 @@ const nextConfig: NextConfig = {
         destination: "/fcyt/darkmind",
         permanent: false,
       },
-      {
-        source: "/exams/:slug",
-        destination: "/fcyt/exams/:slug",
-        permanent: true,
-      },
     ];
   },
 };
