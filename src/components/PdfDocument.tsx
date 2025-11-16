@@ -40,8 +40,11 @@ export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
     }, 3000);
   }, []);
 
-  const fileNameGenerator = () =>
-    pdfContentLabel === "exam" ? `Preguntas_${slug}` : `Respuestas_${slug}`;
+  const fileNameGenerator = useCallback(
+    () =>
+      pdfContentLabel === "exam" ? `Preguntas_${slug}` : `Respuestas_${slug}`,
+    [pdfContentLabel, slug],
+  );
 
   const zoomPluginInstance = zoomPlugin();
   const { ZoomInButton, ZoomOutButton, ZoomPopover } = zoomPluginInstance;
