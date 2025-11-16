@@ -1,11 +1,7 @@
 import { useCallback, useMemo } from "react";
-import { Loader } from "@/assets/Loader";
-import { ErrorCountdown } from "@/assets/ErrorCountdown";
-import { Viewer } from "@react-pdf-viewer/core";
-import { InitTitleCover } from "./InitTitleCover";
-import { useShowCover } from "@/hooks/useShowCover";
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
+import { PdfDocument } from "./PdfDocument";
 
 import styles from "@/components/PdfView.module.css";
 
@@ -20,10 +16,6 @@ interface PdfViewProps {
 }
 
 export const PdfView = ({ pdfContentLabel, slug }: PdfViewProps) => {
-  "use no memo";
-
-  const { showCover, handleDocumentLoad } = useShowCover();
-
   const pdfUrl = useMemo(
     () =>
       examsUrlTemplate
@@ -64,22 +56,12 @@ export const PdfView = ({ pdfContentLabel, slug }: PdfViewProps) => {
           <DownloadButton />
         </div>
       </div>
-      <div className="h-[calc(100%-2.25rem)] relative">
-        <InitTitleCover
-          pdfContentLabel={pdfContentLabel}
-          showCover={showCover}
-        />
-        <Viewer
-          fileUrl={pdfUrl}
-          theme="dark"
-          plugins={[zoomPluginInstance, getFilePluginInstance]}
-          renderLoader={(percentages) => (
-            <Loader percentages={percentages} size={100} fill="#f3f4f6" />
-          )}
-          renderError={() => <ErrorCountdown seconds={3} />}
-          onDocumentLoad={handleDocumentLoad}
-        />
-      </div>
+      <PdfDocument
+        pdfUrl={pdfUrl}
+        pdfContentLabel={pdfContentLabel}
+        zoomPluginInstance={zoomPluginInstance}
+        getFilePluginInstance={getFilePluginInstance}
+      />
     </div>
   );
 };
