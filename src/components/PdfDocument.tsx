@@ -18,6 +18,8 @@ interface PdfDocumentProps {
 }
 
 export const PdfDocument = ({ pdfContentLabel, slug }: PdfDocumentProps) => {
+  "use no memo";
+
   const [showCover, setShowCover] = useState(false);
 
   const pdfUrl = useMemo(
