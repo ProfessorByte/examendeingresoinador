@@ -2,8 +2,6 @@ import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { PdfDocument } from "./PdfDocument";
 
-import styles from "@/components/PdfView.module.css";
-
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
@@ -35,16 +33,12 @@ export const PdfView = ({ pdfContentLabel, slug }: PdfViewProps) => {
     <div className="overflow-x-hidden">
       <div className="sticky z-10 bg-brand-white flex justify-center items-center h-9">
         <div className="flex-1" />
-        <div
-          className={`flex grow-0 justify-center items-center ${styles.btnToolbarContainer}`}
-        >
+        <div className="flex grow-0 justify-center items-center *:flex *:justify-center">
           <ZoomOutButton />
           <ZoomPopover />
           <ZoomInButton />
         </div>
-        <div
-          className={`flex-1 flex justify-start ${styles.btnToolbarContainer}`}
-        >
+        <div className="flex-1 flex justify-start *:flex *:justify-center">
           <DownloadButton />
         </div>
       </div>

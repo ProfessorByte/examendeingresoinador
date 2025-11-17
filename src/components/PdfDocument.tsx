@@ -27,7 +27,7 @@ export const PdfDocument = ({
   };
 
   return (
-    <div className="h-[calc(100%-2.25rem)] relative">
+    <div className="h-[calc(100%-2.25rem)] relative **:data-[testid=core\_\_doc-loading]:bg-transparent!">
       <InitTitleCover pdfContentLabel={pdfContentLabel} showCover={showCover} />
       <Viewer
         fileUrl={pdfUrl}
