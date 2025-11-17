@@ -4,6 +4,8 @@ import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
+  ThreadsIcon,
+  TikTokIcon,
   XIcon,
 } from "@/assets/Icons";
 
@@ -37,6 +39,10 @@ export const Footer = () => {
               href="https://www.facebook.com/PablouxDarkmind"
             />
             <SocialMediaIcon
+              MediaIcon={ThreadsIcon}
+              href="https://www.threads.net/@pabloux_darkmind"
+            />
+            <SocialMediaIcon
               MediaIcon={XIcon}
               href="https://twitter.com/PablouxDarkmind"
             />
@@ -47,6 +53,10 @@ export const Footer = () => {
             <SocialMediaIcon
               MediaIcon={GitHubIcon}
               href="https://github.com/ProfessorByte"
+            />
+            <SocialMediaIcon
+              MediaIcon={TikTokIcon}
+              href="https://www.tiktok.com/@pabloux_darkmind"
             />
           </div>
         </div>
