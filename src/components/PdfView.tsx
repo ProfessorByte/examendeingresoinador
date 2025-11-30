@@ -1,11 +1,12 @@
 import { zoomPlugin } from "@react-pdf-viewer/zoom";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { PdfDocument } from "./PdfDocument";
+import { FCYT_EXAMS_CRAWLER_BASE_URL } from "@/utils/baseUrls";
 
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/zoom/lib/styles/index.css";
 
-const examsUrlTemplate = `https://raw.githubusercontent.com/ProfessorByte/science-exams-crawler/refs/heads/main/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
+const examsUrlTemplate = `${FCYT_EXAMS_CRAWLER_BASE_URL}/downloads/{SLUG}/{CONTENT_LABEL}_{SLUG}.pdf`;
 
 interface PdfViewProps {
   pdfContentLabel: "exam" | "solution";
