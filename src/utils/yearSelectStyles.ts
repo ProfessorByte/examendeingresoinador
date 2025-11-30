@@ -15,6 +15,7 @@ export const darkStyles: StylesConfig<
     ...styles,
     backgroundColor: "#0f172a",
     color: "#f3f4f6",
+    borderColor: "#c9c9c9",
   }),
   menu: (styles) => ({
     ...styles,
