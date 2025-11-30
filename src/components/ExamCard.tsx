@@ -37,7 +37,7 @@ export const ExamCard = ({
 
   return (
     <Link
-      className="group block relative p-3 pt-6 bg-brand-gray rounded-xl border border-solid border-brand-darkwhite/60 shadow-lg shadow-black/30 z-0 overflow-hidden transition-all duration-300 hover:border-brand-darkgreen/60 hover:shadow-brand-darkgreen/30 opacity-0 animate-fade-right"
+      className="group flex flex-col relative p-3 pt-6 bg-brand-gray rounded-xl border border-solid border-brand-darkwhite shadow-lg shadow-black/30 z-0 overflow-hidden transition-all duration-300 hover:border-brand-darkgreen hover:shadow-brand-darkgreen/30 opacity-0 animate-fade-right"
       style={{ animationDelay: `${index * 36}ms` }}
       href={`/fcyt/exams/${slug}`}
     >
@@ -76,12 +76,12 @@ export const ExamCard = ({
         <p className="text-sm font-medium text-teal-300 mb-1.5">{modeLabel}</p>
       )}
 
-      <div className="inline-flex items-center gap-1 px-1.5 py-1 bg-brand-darkgray rounded-md text-sm text-brand-darkwhite mb-3">
+      <div className="w-fit inline-flex items-center gap-1 px-1.5 py-1 bg-brand-darkgray rounded-md text-sm text-brand-darkwhite mb-3">
         <span className="opacity-90">Variante</span>
         <span className="font-semibold text-brand-white">{formVersion}</span>
       </div>
 
-      <div className="flex items-center justify-between mt-auto pt-3 border-t border-brand-darkwhite/60">
+      <div className="flex items-center justify-between mt-auto pt-3 border-t border-brand-darkwhite">
         <p className="text-sm text-brand-darkwhite">{semesterLabel}</p>
         <div className="flex items-center gap-1 text-teal-300 group-hover:translate-x-1 transition-transform duration-300">
           <span className="text-sm font-medium">Ver examen</span>
@@ -89,7 +89,7 @@ export const ExamCard = ({
         </div>
       </div>
 
-      <div className="absolute -z-30 -bottom-30 -right-30 size-90 bg-brand-darkgreen/30 rounded-full blur-3xl opacity-0 group-hover:opacity-90 transition-opacity duration-600" />
+      <div className="absolute -z-30 -bottom-30 -right-30 size-90 bg-brand-darkgreen/30 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-600" />
     </Link>
   );
 };
