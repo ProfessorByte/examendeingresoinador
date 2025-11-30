@@ -19,11 +19,11 @@ const PATHWAY_LABELS: Record<Pathway, string> = {
   3: "Química",
   4: "Física",
   5: "Biología",
-  6: "General",
+  6: "Ciencias & Tecnología",
   7: "Estrategias de Aprendizaje",
   8: "Gastronomía",
-  9: "General",
-  10: "General",
+  9: "Ciencias & Tecnología",
+  10: "Ciencias & Tecnología",
 } as const;
 
 const PATHWAY_ICONS: Record<Pathway, string> = {
