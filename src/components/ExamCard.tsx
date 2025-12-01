@@ -6,7 +6,7 @@ import {
   getExamCategoryLabel,
   getExamModeLabel,
   getPathwayLabel,
-  getPathwayIcon,
+  getPathwayIconComponent,
   formatSemesterLabel,
   shouldShowModeInfo,
 } from "@/utils/examMappings";
@@ -28,7 +28,7 @@ export const ExamCard = ({
   const category = getExamCategory(pathway);
   const categoryLabel = getExamCategoryLabel(pathway);
   const pathwayLabel = getPathwayLabel(pathway);
-  const pathwayIcon = getPathwayIcon(pathway);
+  const PathwayIcon = getPathwayIconComponent(pathway);
   const showModeInfo = shouldShowModeInfo(pathway);
   const modeLabel = getExamModeLabel(mode);
   const semesterLabel = formatSemesterLabel(semester, year);
@@ -64,9 +64,10 @@ export const ExamCard = ({
       </div>
 
       <div className="flex items-center gap-1.5 mb-1.5">
-        <span className="text-2xl" role="img" aria-label={pathwayLabel}>
-          {pathwayIcon}
-        </span>
+        <PathwayIcon
+          className="size-6 text-teal-300 shrink-0"
+          aria-hidden="true"
+        />
         <h2 className="text-xl font-bold text-brand-white leading-tight">
           {pathwayLabel}
         </h2>

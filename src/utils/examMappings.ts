@@ -1,4 +1,16 @@
+import {
+  ArithmeticAlgebraIcon,
+  BiologyIcon,
+  ChemistryIcon,
+  GastronomyIcon,
+  GeometryTrigonometryIcon,
+  LearningStrategiesIcon,
+  PhysicsIcon,
+  ScienceTechnologyIcon,
+} from "@/assets/FcytExamsIcons";
+
 import type { ExamMode, Pathway } from "@/types/exam.types";
+import type { PathwayIconFC } from "@/types/icons.types";
 
 type ExamCategory = "entrance" | "preuniversity";
 
@@ -26,17 +38,17 @@ const PATHWAY_LABELS: Record<Pathway, string> = {
   10: "Ciencias & Tecnología",
 } as const;
 
-const PATHWAY_ICONS: Record<Pathway, string> = {
-  1: "🔢",
-  2: "📐",
-  3: "⚗️",
-  4: "⚛️",
-  5: "🧬",
-  6: "📚",
-  7: "🧠",
-  8: "🍳",
-  9: "📚",
-  10: "📚",
+export const PATHWAY_ICON_COMPONENTS: Record<Pathway, PathwayIconFC> = {
+  1: ArithmeticAlgebraIcon,
+  2: GeometryTrigonometryIcon,
+  3: ChemistryIcon,
+  4: PhysicsIcon,
+  5: BiologyIcon,
+  6: ScienceTechnologyIcon,
+  7: LearningStrategiesIcon,
+  8: GastronomyIcon,
+  9: ScienceTechnologyIcon,
+  10: ScienceTechnologyIcon,
 } as const;
 
 const ENTRANCE_EXAM_PATHWAYS: readonly Pathway[] = [6, 8, 9, 10] as const;
@@ -60,8 +72,8 @@ export const getPathwayLabel = (pathway: Pathway): string => {
   return PATHWAY_LABELS[pathway];
 };
 
-export const getPathwayIcon = (pathway: Pathway): string => {
-  return PATHWAY_ICONS[pathway];
+export const getPathwayIconComponent = (pathway: Pathway): PathwayIconFC => {
+  return PATHWAY_ICON_COMPONENTS[pathway];
 };
 
 export const shouldShowModeInfo = (pathway: Pathway): boolean => {

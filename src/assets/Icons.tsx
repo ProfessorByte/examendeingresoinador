@@ -6,9 +6,7 @@
  * Formatted using: https://react-svgr.com/playground/
  */
 
-import type { JSX, SVGProps } from "react";
-
-interface IconProps extends JSX.IntrinsicAttributes, SVGProps<SVGSVGElement> {}
+import type { IconProps } from "@/types/icons.types";
 
 export const InstagramIcon = (props: IconProps) => (
   <svg
