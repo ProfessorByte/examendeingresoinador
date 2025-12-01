@@ -7,7 +7,7 @@ import {
   ThreadsIcon,
   TikTokIcon,
   XIcon,
-} from "@/assets/Icons";
+} from "@/assets/SocialMediaIcons";
 
 import Image from "next/image";
 
