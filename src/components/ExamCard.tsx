@@ -9,7 +9,7 @@ import {
   getPathwayIconComponent,
   formatSemesterLabel,
   shouldShowModeInfo,
-} from "@/utils/examMappings";
+} from "@/utils/fcytExamMappings";
 
 interface ExamCardProps extends Exam {
   index: number;
