@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { type Plugin, Viewer } from "@react-pdf-viewer/core";
 import { Loader } from "@/assets/Loader";
-import { ErrorCountdown } from "@/assets/ErrorCountdown";
+import { PdfError } from "@/components/PdfError";
 import { InitTitleCover } from "./InitTitleCover";
 
 interface PdfDocumentProps {
@@ -36,7 +36,7 @@ export const PdfDocument = ({
         renderLoader={(percentages) => (
           <Loader percentages={percentages} size={100} fill="#f3f4f6" />
         )}
-        renderError={() => <ErrorCountdown seconds={3} />}
+        renderError={() => <PdfError />}
         onDocumentLoad={handleDocumentLoad}
         pageLayout={{
           buildPageStyles: () => ({
