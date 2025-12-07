@@ -77,9 +77,9 @@ export const ExamCard = ({
         <p className="text-sm font-medium text-teal-300 mb-1.5">{modeLabel}</p>
       )}
 
-      <div className="w-fit inline-flex items-center gap-1 px-1.5 py-1 bg-brand-darkgray rounded-md text-sm text-brand-darkwhite mb-3">
-        <span className="opacity-90">Variante</span>
-        <span className="font-semibold text-brand-white">{formVersion}</span>
+      <div className="w-fit inline-flex items-center gap-1 px-1.5 py-1 bg-brand-darkgray rounded-md text-sm text-brand-white mb-3">
+        <span className="opacity-90">Fila</span>
+        <span className="font-semibold">{formVersion}</span>
       </div>
 
       <div className="flex items-center justify-between mt-auto pt-3 border-t border-brand-darkwhite">
