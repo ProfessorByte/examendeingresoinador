@@ -1,5 +1,5 @@
 /**
- * SVG Icons for social media platforms.
+ * SVG Icons for exam-related subjects and topics.
  * Each icon is a React functional component that accepts standard SVG props.
  * Review icons: https://www.flaticon.com/search?&color=black
  * Optimized using: https://jakearchibald.github.io/svgomg/
