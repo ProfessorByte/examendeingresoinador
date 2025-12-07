@@ -19,7 +19,7 @@ export default function NotFound() {
           alt="Pabloux Darkmind"
           width={180}
           height={180}
-          className="rounded-full border-4 border-brand-white shadow-[0_0_30px_rgba(20,184,166,0.5)]"
+          className="rounded-full border-4 border-brand-white"
           priority
         />
 
