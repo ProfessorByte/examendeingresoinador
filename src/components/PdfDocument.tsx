@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { type Plugin, Viewer } from "@react-pdf-viewer/core";
 import { Loader } from "@/assets/Loader";
 import { PdfError } from "@/components/PdfError";
@@ -19,11 +19,18 @@ export const PdfDocument = ({
 }: PdfDocumentProps) => {
   const [showCover, setShowCover] = useState(false);
 
-  const handleDocumentLoad = () => {
-    setShowCover(true);
-    setTimeout(() => {
+  useEffect(() => {
+    if (!showCover) return;
+
+    const timer = setTimeout(() => {
       setShowCover(false);
     }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [showCover]);
+
+  const handleDocumentLoad = () => {
+    setShowCover(true);
   };
 
   return (
