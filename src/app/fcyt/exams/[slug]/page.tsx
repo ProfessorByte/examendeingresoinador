@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 const ExamSolutionSplit = dynamic(
   () => import("@/components/ExamSolutionSplit"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function FcytExamsPage() {

@@ -15,6 +15,7 @@ export const darkStyles: StylesConfig<
     ...styles,
     backgroundColor: "#0f172a",
     color: "#f3f4f6",
+    borderColor: "#c9c9c9",
   }),
   menu: (styles) => ({
     ...styles,
@@ -24,6 +25,9 @@ export const darkStyles: StylesConfig<
     ...styles,
     backgroundColor: isSelected ? "#111111" : isFocused ? "#202123" : "#343541",
     color: "#f3f4f6",
+    ":active": {
+      backgroundColor: "#2684ff",
+    },
   }),
   singleValue: (styles) => ({
     ...styles,

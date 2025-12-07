@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  reactCompiler: true,
   redirects: async () => {
     return [
       {
@@ -18,11 +19,6 @@ const nextConfig: NextConfig = {
         source: "/fcyt/exams",
         destination: "/fcyt/darkmind",
         permanent: false,
-      },
-      {
-        source: "/exams/:slug",
-        destination: "/fcyt/exams/:slug",
-        permanent: true,
       },
     ];
   },

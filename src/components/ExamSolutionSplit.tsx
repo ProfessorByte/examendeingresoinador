@@ -1,8 +1,8 @@
 import { Gutter } from "@/components/Gutter";
-import { PdfDocument } from "@/components/PdfDocument";
+import { PdfView } from "@/components/PdfView";
 import { Worker } from "@react-pdf-viewer/core";
 import { useParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Split from "react-split-grid";
 
 import type { Direction } from "@/types/split.types";
@@ -27,47 +27,45 @@ export default function ExamSolutionSplit() {
     };
   }, []);
 
-  const setSplitProps = useCallback(
-    (direction: Direction) => {
-      if (direction === "row") {
-        return {
-          gridTemplateColumns: "1fr",
-          columnMinSize: undefined,
-          gridTemplateRows: gridTemplate,
-          cursor: "row-resize",
-          rowMinSize: 36,
-        };
-      }
+  const setSplitProps = (direction: Direction) => {
+    if (direction === "row") {
       return {
-        gridTemplateRows: "1fr",
-        rowMinSize: undefined,
-        gridTemplateColumns: gridTemplate,
-        cursor: "col-resize",
-        columnMinSize: 36,
+        gridTemplateColumns: "1fr",
+        columnMinSize: undefined,
+        gridTemplateRows: gridTemplate,
+        cursor: "row-resize",
+        rowMinSize: 36,
       };
-    },
-    [gridTemplate],
-  );
+    }
+    return {
+      gridTemplateRows: "1fr",
+      rowMinSize: undefined,
+      gridTemplateColumns: gridTemplate,
+      cursor: "col-resize",
+      columnMinSize: 36,
+    };
+  };
 
-  const handleDrag = useCallback(
-    (_direction: Direction, _track: number, gridTemplateStyle: string) => {
-      setGridTemplate(gridTemplateStyle);
-    },
-    [],
-  );
+  const handleDrag = (
+    _direction: Direction,
+    _track: number,
+    gridTemplateStyle: string,
+  ) => {
+    setGridTemplate(gridTemplateStyle);
+  };
 
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
       <Split {...setSplitProps(directionSplit)} onDrag={handleDrag}>
         {({ getGridProps, getGutterProps }) => (
           <div className="grid h-dvh" {...getGridProps()}>
-            <PdfDocument pdfContentLabel="exam" slug={slug} />
+            <PdfView pdfContentLabel="exam" slug={slug} />
             <Gutter
               direction={directionSplit}
               getGutterProps={getGutterProps}
               track={1}
             />
-            <PdfDocument pdfContentLabel="solution" slug={slug} />
+            <PdfView pdfContentLabel="solution" slug={slug} />
           </div>
         )}
       </Split>
