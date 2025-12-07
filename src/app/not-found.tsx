@@ -30,7 +30,7 @@ export default function NotFound() {
           <p className="text-brand-darkwhite text-lg">
             ¡Alto ahí, intruso! Esta página está más protegida que los secretos
             del Área 51, no intentes hackearla. Mejor regresa por donde viniste
-            antes de que active mi Anti-Hacker-inador.
+            antes de que active mi Dark-Anti-Hacker-inador.
           </p>
           <p className="text-2xl md:text-3xl font-bold text-brand-darkgreen mb-6 mt-0">
             ¡El único hacker aquí, soy yo!
