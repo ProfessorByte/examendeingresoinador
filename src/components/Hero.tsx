@@ -10,7 +10,7 @@ export const Hero = () => {
         alt="Examen de Ingreso-inador: Encuentra exámenes pasados para ingresar a la Facultad de Tecnología de la UMSS"
         className="animate-fade-down drop-shadow-[0_0_15px_black]"
         width={300}
-        priority
+        preload={true}
       />
       <h1 className="sr-only">
         Examen de Ingreso-inador: Encuentra exámenes pasados para ingresar a la
