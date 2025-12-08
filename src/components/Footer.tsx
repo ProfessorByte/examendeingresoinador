@@ -11,16 +11,17 @@ import {
 
 import Image from "next/image";
 
+import pabloux from "@/../public/pabloux.jpg";
+
 export const Footer = () => {
   return (
     <footer className="overflow-auto bg-brand-gray text-brand-white py-12">
       <article className="flex flex-col gap-6 justify-center items-center md:flex-row">
         <Image
-          src="/pabloux.jpg"
+          src={pabloux}
           alt="Pabloux Darkmind"
           className="rounded-full border-4 border-solid border-brand-white shadow-lg shadow-black"
           width={144}
-          height={144}
         />
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-semibold">
