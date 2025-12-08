@@ -22,6 +22,7 @@ export const Footer = () => {
           alt="Pabloux Darkmind"
           className="rounded-full border-4 border-solid border-brand-white shadow-lg shadow-black"
           width={144}
+          fetchPriority="high"
         />
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-semibold">

@@ -4,17 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { bangers } from "@/utils/fonts";
 
+import pabloux from "@/../public/pabloux.jpg";
+
 export const PdfError = () => {
   return (
     <div className="h-full flex flex-col items-center justify-center relative overflow-hidden px-4 py-54">
       <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
         <Image
-          src="/pabloux.jpg"
+          src={pabloux}
           alt="Pabloux Darkmind"
           width={120}
-          height={120}
           className="rounded-full border-4 border-brand-white"
-          priority
+          fetchPriority="high"
         />
 
         <div className="space-y-2 max-w-md md:min-w-xs">
