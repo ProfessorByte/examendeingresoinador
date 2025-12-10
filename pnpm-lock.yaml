@@ -52,7 +52,7 @@ importers:
         specifier: ^19
         version: 19.2.3(@types/react@19.2.7)
       babel-plugin-react-compiler:
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0
       tailwindcss:
         specifier: ^4
