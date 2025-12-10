@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write"
@@ -13,10 +13,10 @@
     "@react-pdf-viewer/core": "3.12.0",
     "@react-pdf-viewer/get-file": "^3.12.0",
     "@react-pdf-viewer/zoom": "^3.12.0",
-    "next": "16.0.7",
+    "next": "15.5.7",
     "pdfjs-dist": "3.4.120",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-select": "^5.10.2",
     "react-split-grid": "^1.0.4"
   },
