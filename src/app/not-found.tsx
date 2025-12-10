@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import pabloux from "@/../public/pabloux.jpg";
+
 export const metadata: Metadata = {
   title: "Página no encontrada - Examen de Ingreso-inador",
 };
@@ -15,12 +17,11 @@ export default function NotFound() {
 
       <div className="flex flex-col items-center text-center space-y-8 px-4">
         <Image
-          src="/pabloux.jpg"
+          src={pabloux}
           alt="Pabloux Darkmind"
           width={180}
-          height={180}
           className="rounded-full border-4 border-brand-white"
-          priority
+          fetchPriority="high"
         />
 
         <div className="space-y-4 max-w-xl">
